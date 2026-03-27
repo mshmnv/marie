@@ -6,7 +6,7 @@ const fs   = require('fs');
 const path = require('path');
 
 const dir    = path.join(__dirname, 'photos');
-const output = path.join(__dirname, 'photos.json');
+const output = path.join(__dirname, 'data', 'photos.json');
 
 const exts = ['.jpg', '.jpeg', '.png', '.webp'];
 

@@ -257,8 +257,8 @@ function renderScatter(s, el) {
 } // end renderScatter
 
 Promise.all([
-  fetch('photos.json').then(r => r.json()),
-  fetch('scatter.json').then(r => r.json()),
+  fetch('data/photos.json').then(r => r.json()),
+  fetch('data/scatter.json').then(r => r.json()),
 ]).then(([list, scatter]) => {
   photos = list;
   buildGallery(photos, scatter);

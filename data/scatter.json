@@ -2,14 +2,12 @@
   { "after": 2,  "type": "word",      "text": "STILL",                              "mod": "outline overlap-up" },
   { "after": 3,  "type": "label",     "text": "KODAK PORTRA 400 · 35MM · F1.8" },
   { "after": 4,  "type": "word",      "text": "SHOT",                               "mod": "red overlap-up", "blur": 1.5 },
-  { "after": 5,  "type": "rule" },
   { "after": 6,  "type": "phrase",    "text": "not performing",                     "mod": "gray right" },
   { "after": 7,  "type": "word",      "text": "BARE",                               "mod": "outline overlap-up" },
   { "after": 8,  "type": "blur-word", "text": "REAL",                               "mod": "" },
   { "after": 9,  "type": "circled",   "text": "eyes open",                          "mod": "" },
   { "after": 10, "type": "word",      "text": "ALIVE",                              "mod": "overlap-up" },
   { "after": 12, "type": "word",      "text": "NOW",                                "mod": "red overlap-up" },
-  { "after": 13, "type": "rule" },
   { "after": 14, "type": "word",      "text": "SEEN",                               "mod": "red-outline overlap-up" },
   { "after": 14, "type": "label",     "text": "DIRECTOR'S CUT — STUDY — REFERENCE" }
 ]

@@ -14,6 +14,7 @@
     <a href="index.html" class="nav-logo">MARIE</a>
     <div class="nav-links">
       <a href="index.html">WORK</a>
+      <a href="pricing.html">PRICES</a>
       <a href="about.html" class="active">ABOUT</a>
     </div>
   </nav>
@@ -39,8 +40,16 @@
     <img src="icons/cross.png" alt="">
   </div>
 
+  <footer class="site-footer">
+    <div class="site-footer-name">MARIE</div>
+    <div class="site-footer-links">
+      <a href="mailto:minaevamarie@gmail.com">minaevamarie@gmail.com</a>
+      <a href="https://www.instagram.com/miinaeva/" target="_blank" rel="noopener">@miinaeva</a>
+    </div>
+  </footer>
+
   <script>
-    fetch('about.json').then(r => r.json()).then(data => {
+    fetch('data/about.json').then(r => r.json()).then(data => {
       const bio = document.getElementById('about-bio');
       bio.innerHTML = data.bio.map(line => line === '' ? '<br>' : line).join('<br>');
 
