@@ -1,0 +1,14 @@
+{
+  "bio": [
+    "привет, я мари.",
+    "делаю кинематографичные фотографии и видео работы.",
+    "",
+    "живу в москве,",
+    "но часто меня можно поймать в других странах."
+  ],
+  "links": [
+    { "label": "Instagram",              "url": "https://www.instagram.com/miinaeva/",    "external": true },
+    { "label": "YouTube",                "url": "https://www.youtube.com/@marieminaeva",  "external": true },
+    { "label": "minaevamarie@gmail.com", "url": "mailto:minaevamarie@gmail.com",          "external": false }
+  ]
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MARIE — About</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <span class="nav-sub">prod by</span>
+    <a href="index.html" class="nav-logo">MARIE</a>
+    <div class="nav-links">
+      <a href="index.html">WORK</a>
+      <a href="about.html" class="active">ABOUT</a>
+    </div>
+  </nav>
+
+  <div class="about-wrap">
+
+    <div class="about-photo">
+      <img src="myPhoto.jpg" alt="Marie">
+    </div>
+
+    <div class="about-content">
+
+      <p class="about-bio" id="about-bio"></p>
+
+      <div class="about-divider"></div>
+
+      <div class="about-links" id="about-links"></div>
+
+    </div>
+  </div>
+
+  <div class="page-footer-cross">
+    <img src="icons/cross.png" alt="">
+  </div>
+
+  <script>
+    fetch('about.json').then(r => r.json()).then(data => {
+      const bio = document.getElementById('about-bio');
+      bio.innerHTML = data.bio.map(line => line === '' ? '<br>' : line).join('<br>');
+
+      const links = document.getElementById('about-links');
+      data.links.forEach(l => {
+        const a = document.createElement('a');
+        a.href = l.url;
+        a.className = 'about-link';
+        if (l.external) { a.target = '_blank'; a.rel = 'noopener'; }
+        a.innerHTML = l.label + '<span class="link-arrow">→</span>';
+        links.appendChild(a);
+      });
+    });
+  </script>
+  <script src="grain.js"></script>
+</body>
+</html>
