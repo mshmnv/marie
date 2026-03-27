@@ -62,7 +62,7 @@ nav {
 }
 
 .nav-logo {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(100px, 20vw, 240px);
   color: var(--black);
   text-decoration: none;
@@ -179,7 +179,7 @@ nav {
 
 /* ── 1. HUGE single word: SHOT / STILL / PROOF etc. */
 .st-word {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(52px, 10vw, 120px);
   line-height: 0.84;
   letter-spacing: 0.02em;
@@ -338,7 +338,7 @@ nav {
 }
 
 .st-circled-text {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(32px, 6vw, 64px);
   letter-spacing: 0.08em;
   color: var(--black);
@@ -392,7 +392,7 @@ nav {
 .st-blur {
   column-span: all;
   display: block;
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(100px, 20vw, 240px);
   line-height: 0.75;
   letter-spacing: 0.03em;
@@ -436,7 +436,7 @@ nav {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(13px, 2vw, 20px);
   letter-spacing: 0.28em;
   color: #ffffff;
@@ -516,7 +516,7 @@ nav {
 }
 
 .site-footer-name {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(28px, 5vw, 52px);
   letter-spacing: 0.04em;
   color: var(--black);
@@ -574,7 +574,7 @@ nav {
   background: none;
   border: none;
   color: #fff;
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 48px;
   line-height: 1;
   cursor: pointer;
@@ -640,7 +640,7 @@ nav {
 }
 
 .about-name {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(72px, 10vw, 120px);
   line-height: 0.85;
   letter-spacing: 0.03em;
@@ -683,7 +683,7 @@ nav {
 .about-link:hover { color: var(--red); padding-left: 8px; }
 
 .link-arrow {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 20px;
   letter-spacing: 0;
 }

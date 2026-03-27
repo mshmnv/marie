@@ -14,7 +14,7 @@
 }
 
 .pricing-title {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(80px, 16vw, 180px);
   line-height: 0.85;
   letter-spacing: 0.03em;
@@ -62,14 +62,14 @@
 }
 
 .pricing-type {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 32px;
   letter-spacing: 0.06em;
   color: var(--black);
 }
 
 .pricing-price {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 28px;
   letter-spacing: 0.04em;
   color: var(--red);
@@ -113,13 +113,13 @@
 }
 
 .pricing-addon-label {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 20px;
   letter-spacing: 0.06em;
 }
 
 .pricing-addon-price {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 20px;
   color: var(--red);
 }
@@ -139,7 +139,7 @@
 }
 
 .pricing-how-title {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(36px, 6vw, 64px);
   letter-spacing: 0.04em;
   margin-bottom: 24px;
@@ -169,7 +169,7 @@
 
 .pricing-steps li::before {
   content: counter(steps, decimal-leading-zero);
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: 28px;
   color: var(--red);
   min-width: 36px;
