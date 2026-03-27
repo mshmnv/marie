@@ -50,6 +50,15 @@ const tornNote   = 'icons/torn-note.jpg';
 // ── Build gallery ─────────────────────────────────────────────
 const grid = document.getElementById('gallery');
 
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
 function buildGallery(photos, scatter) {
   const scatterMap = {};
   scatter.forEach(s => {
@@ -116,6 +125,7 @@ photos.forEach((src, i) => {
   card.addEventListener('mouseleave', applyTransform);
   card.addEventListener('click', () => openLightbox(i));
 
+  observer.observe(card);
   grid.appendChild(card);
 
   // Scatter items after this photo
