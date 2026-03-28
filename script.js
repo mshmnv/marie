@@ -73,7 +73,8 @@ function buildGallery(photos, scatter) {
   grid.appendChild(el);
 });
 
-photos.forEach((src, i) => {
+photos.forEach((photo, i) => {
+  const src = photo.src;
   // Photo card
   const card = document.createElement('div');
   card.className = 'photo-card';
@@ -106,7 +107,7 @@ photos.forEach((src, i) => {
   card.appendChild(inner);
 
   // Big photo?
-  const isBig = src.includes('_big');
+  const isBig = !!photo.big;
   if (isBig) card.classList.add('big');
 
   // Random rotation + nudge (big photos — меньше наклон)
@@ -270,7 +271,8 @@ Promise.all([
   fetch('data/photos.json').then(r => r.json()),
   fetch('data/scatter.json').then(r => r.json()),
 ]).then(([list, scatter]) => {
-  photos = list;
+  const sorted = [...list.filter(p => p.main), ...list.filter(p => !p.main)];
+  photos = sorted;
   buildGallery(photos, scatter);
 });
 
@@ -285,7 +287,7 @@ let currentIndex = 0;
 
 function openLightbox(index) {
   currentIndex = index;
-  lbImg.src = 'photos/' + photos[index];
+  lbImg.src = 'photos/' + photos[index].src;
   lb.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -297,12 +299,12 @@ function closeLightbox() {
 
 function showPrev() {
   currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-  lbImg.src = 'photos/' + photos[currentIndex];
+  lbImg.src = 'photos/' + photos[currentIndex].src;
 }
 
 function showNext() {
   currentIndex = (currentIndex + 1) % photos.length;
-  lbImg.src = 'photos/' + photos[currentIndex];
+  lbImg.src = 'photos/' + photos[currentIndex].src;
 }
 
 lbClose.addEventListener('click', closeLightbox);

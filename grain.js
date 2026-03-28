@@ -9,7 +9,7 @@
     height:        '100%',
     pointerEvents: 'none',
     zIndex:        '9998',
-    opacity:       '0.07',
+    opacity:       '0.04',
     mixBlendMode:  'overlay',
   });
 
