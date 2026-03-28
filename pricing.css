@@ -55,7 +55,7 @@
 .pricing-card-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
   margin-bottom: 20px;
   padding-bottom: 14px;
   border-bottom: 2px solid var(--red);
@@ -74,6 +74,16 @@
   letter-spacing: 0.04em;
   color: var(--red);
   white-space: nowrap;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.pricing-price-usd {
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: #aaa;
 }
 
 .pricing-list {
@@ -122,6 +132,10 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 20px;
   color: var(--red);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
 }
 
 .pricing-addon-desc {
