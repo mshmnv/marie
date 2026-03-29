@@ -91,7 +91,7 @@ nav {
 .gallery-wrap { padding: 20px 3% 120px 3%; position: relative; }
 
 .gallery-grid {
-  columns: 5 140px;
+  columns: 5;
   column-gap: 10px;
 }
 
@@ -695,7 +695,7 @@ nav {
 /* ── RESPONSIVE ── */
 
 @media (max-width: 900px) {
-  .gallery-grid { columns: 4 130px; }
+  .gallery-grid { columns: 3; }
 }
 
 /* ── Tablet ── */
