@@ -54,6 +54,12 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.classList.add('visible');
+      const video = e.target.querySelector('video[data-src]');
+      if (video) {
+        video.src = video.dataset.src;
+        video.removeAttribute('data-src');
+        video.play().catch(() => {});
+      }
       observer.unobserve(e.target);
     }
   });
@@ -83,10 +89,10 @@ photos.forEach((photo, i) => {
 
   if (photo.type === 'video') {
     const video = document.createElement('video');
-    video.src = photo.src;
-    video.autoplay = true;
+    video.dataset.src = photo.src;
     video.muted = true;
     video.loop = true;
+    video.preload = 'none';
     video.setAttribute('playsinline', '');
     inner.appendChild(video);
   } else {
