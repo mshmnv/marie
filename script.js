@@ -74,34 +74,43 @@ function buildGallery(photos, scatter) {
 });
 
 photos.forEach((photo, i) => {
-  const src = photo.src;
-  // Photo card
+  // Photo/video card
   const card = document.createElement('div');
   card.className = 'photo-card';
 
   const inner = document.createElement('div');
   inner.className = 'photo-inner';
 
-  const img = document.createElement('img');
-  img.src = 'photos/' + src;
-  img.alt = '';
-  img.loading = 'lazy';
-  img.addEventListener('error', () => card.style.display = 'none');
-  inner.appendChild(img);
+  if (photo.type === 'video') {
+    const video = document.createElement('video');
+    video.src = photo.src;
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
+    video.setAttribute('playsinline', '');
+    inner.appendChild(video);
+  } else {
+    const img = document.createElement('img');
+    img.src = 'photos/' + photo.src;
+    img.alt = '';
+    img.loading = 'lazy';
+    img.addEventListener('error', () => card.style.display = 'none');
+    inner.appendChild(img);
 
-  // Red × stamp on selected photos
-  if (stampedPhotos.has(i)) {
-    const x = document.createElement('div');
-    x.className = 'photo-x';
-    if (i % 2 === 0) {
-      x.style.top = 'auto'; x.style.bottom = '5%';
-      x.style.left = 'auto'; x.style.right = '4%';
+    // Red × stamp on selected photos
+    if (stampedPhotos.has(i)) {
+      const x = document.createElement('div');
+      x.className = 'photo-x';
+      if (i % 2 === 0) {
+        x.style.top = 'auto'; x.style.bottom = '5%';
+        x.style.left = 'auto'; x.style.right = '4%';
+      }
+      const xImg = document.createElement('img');
+      xImg.src = 'icons/cross.png';
+      xImg.alt = '';
+      x.appendChild(xImg);
+      inner.appendChild(x);
     }
-    const xImg = document.createElement('img');
-    xImg.src = 'icons/cross.png';
-    xImg.alt = '';
-    x.appendChild(xImg);
-    inner.appendChild(x);
   }
 
   card.appendChild(inner);
@@ -277,17 +286,32 @@ Promise.all([
 });
 
 // ── Lightbox ──────────────────────────────────────────────────
-const lb      = document.getElementById('lightbox');
-const lbImg   = document.getElementById('lb-img');
-const lbClose = document.getElementById('lb-close');
-const lbPrev  = document.getElementById('lb-prev');
-const lbNext  = document.getElementById('lb-next');
+const lb       = document.getElementById('lightbox');
+const lbImg    = document.getElementById('lb-img');
+const lbVideo  = document.getElementById('lb-video');
+const lbClose  = document.getElementById('lb-close');
+const lbPrev   = document.getElementById('lb-prev');
+const lbNext   = document.getElementById('lb-next');
 
 let currentIndex = 0;
 
+function updateLightbox(index) {
+  const item = photos[index];
+  if (item.type === 'video') {
+    lbImg.style.display = 'none';
+    lbVideo.style.display = 'block';
+    lbVideo.src = `https://player.vimeo.com/video/${item.videoId}?autoplay=1&color=ffffff&title=0&byline=0&portrait=0`;
+  } else {
+    lbImg.style.display = 'block';
+    lbVideo.style.display = 'none';
+    lbVideo.src = '';
+    lbImg.src = 'photos/' + item.src;
+  }
+}
+
 function openLightbox(index) {
   currentIndex = index;
-  lbImg.src = 'photos/' + photos[index].src;
+  updateLightbox(index);
   lb.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -295,16 +319,17 @@ function openLightbox(index) {
 function closeLightbox() {
   lb.classList.remove('open');
   document.body.style.overflow = '';
+  lbVideo.src = '';
 }
 
 function showPrev() {
   currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-  lbImg.src = 'photos/' + photos[currentIndex].src;
+  updateLightbox(currentIndex);
 }
 
 function showNext() {
   currentIndex = (currentIndex + 1) % photos.length;
-  lbImg.src = 'photos/' + photos[currentIndex].src;
+  updateLightbox(currentIndex);
 }
 
 lbClose.addEventListener('click', closeLightbox);

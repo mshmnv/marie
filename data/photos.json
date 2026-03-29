@@ -1,4 +1,5 @@
 [
+  { "src": "video/marina.mp4", "type": "video", "videoId": "1178094648", "big": true, "main": true },
   { "src": "1.jpg",     "main": true, "big": true },
   { "src": "2.jpg",     "main": true },
   { "src": "4.jpg" },
