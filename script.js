@@ -79,6 +79,11 @@ function buildGallery(photos, scatter) {
   grid.appendChild(el);
 });
 
+// Строка для main-фото
+const mainRow = document.createElement('div');
+mainRow.className = 'gallery-main-row';
+grid.appendChild(mainRow);
+
 photos.forEach((photo, i) => {
   // Photo/video card
   const card = document.createElement('div');
@@ -128,7 +133,7 @@ photos.forEach((photo, i) => {
   // Random rotation + nudge (big photos — меньше наклон)
   const rot   = (Math.random() * (isBig ? 4 : 10) - (isBig ? 2 : 5)).toFixed(2);
   const nudge = (Math.random() * (isBig ? 8 : 18) - (isBig ? 4 : 9)).toFixed(1);
-  const scale = isBig ? 1.18 : 1;
+  const scale = (isBig && !photo.main) ? 1.18 : 1;
 
   const applyTransform = () => { card.style.transform = `scale(${scale}) rotate(${rot}deg) translateX(${nudge}px)`; };
   const straighten     = () => { card.style.transform = `scale(${scale})`; };
@@ -142,7 +147,11 @@ photos.forEach((photo, i) => {
   card.addEventListener('click', () => openLightbox(i));
 
   observer.observe(card);
-  grid.appendChild(card);
+  if (photo.main) {
+    mainRow.appendChild(card);
+  } else {
+    grid.appendChild(card);
+  }
 
   // Scatter items after this photo
   (scatterMap[i] || []).forEach(s => {
