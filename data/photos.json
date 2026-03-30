@@ -13,5 +13,6 @@
   { "src": "14.jpg" },
   { "src": "16.jpg" },
   { "src": "17.jpg",                  "big": true },
-  { "src": "DSC00807.jpg" }
+  { "src": "DSC00807.jpg" },
+  { "src": "video/staskris.mp4", "type": "video", "videoId": "1178321768", "big": true, "main": true }
 ]
