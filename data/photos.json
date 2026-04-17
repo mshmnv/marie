@@ -2,10 +2,13 @@
   { "src": "video/marina.mp4", "type": "video", "videoId": "1178094648", "big": true, "main": true },
   { "src": "1.jpg",     "main": true, "big": true },
   { "src": "DSC00900.jpg" },
-  { "src": "4.jpg" },
   { "src": "5.jpg" },
+  { "src": "DSC01424.jpg" , "main": true},
+  { "src": "video/staskris.mp4", "type": "video", "videoId": "1178332104", "big": true, "main": true },
+  { "src": "DSC02113.jpg" , "main": true},
   { "src": "3.jpg",     "main": true},
   { "src": "7.jpg",                   "big": true },
+  { "src": "DSC01643.jpg", "main": true },
   { "src": "8.jpg" },
   { "src": "11.jpg" },
   { "src": "12.jpg" },
@@ -13,6 +16,7 @@
   { "src": "14.jpg" },
   { "src": "16.jpg" },
   { "src": "17.jpg",                  "big": true },
-  { "src": "DSC00807.jpg" },
-  { "src": "video/staskris.mp4", "type": "video", "videoId": "1178332104", "big": true, "main": true }
+  { "src": "DSC01496-2.jpg", "main": true},
+  { "src": "DSC01792.jpg" },
+  { "src": "DSC02182.jpg" }
 ]
