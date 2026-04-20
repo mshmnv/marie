@@ -1,5 +1,21 @@
 fetch('data/pricing.json').then(r => r.json()).then(data => {
   const grid = document.querySelector('.pricing-grid');
+  const disc = data.discount || 0;
+
+  function discountedPrice(rubStr) {
+    const num = parseInt(rubStr.replace(/\D/g, ''));
+    const sale = Math.round(num * (1 - disc) / 100) * 100;
+    return sale.toLocaleString('ru-RU') + ' ₽';
+  }
+
+  function priceHTML(card) {
+    if (!disc) return `<span class="pricing-price">${card.priceRub}</span>`;
+    return `
+      <span class="pricing-price">
+        <span class="price-old">${card.priceRub}</span>
+        <span class="price-sale">${discountedPrice(card.priceRub)}</span>
+      </span>`;
+  }
 
   function cardHTML(card) {
     const items = card.features.map(f => `<li>${f}</li>`).join('');
@@ -8,19 +24,17 @@ fetch('data/pricing.json').then(r => r.json()).then(data => {
       <div class="pricing-card">
         <div class="pricing-card-header">
           <span class="pricing-type">${displayType}</span>
-          <span class="pricing-price">${card.priceRub}<span class="pricing-price-usd">${card.priceUsd}</span></span>
+          ${priceHTML(card)}
         </div>
         <ul class="pricing-list">${items}</ul>
       </div>`;
   }
 
-  // Фото-тарифы (все кроме последнего — видео) → в сетку
   const photoCards = data.cards.filter(c => c.type !== 'ВИДЕОПОРТРЕТ');
   const videoCard  = data.cards.find(c => c.type === 'ВИДЕОПОРТРЕТ');
 
   photoCards.forEach(c => grid.insertAdjacentHTML('beforeend', cardHTML(c)));
 
-  // Аддон — сразу после сетки
   if (data.addon) {
     const a = data.addon;
     const addonHTML = `
@@ -32,7 +46,6 @@ fetch('data/pricing.json').then(r => r.json()).then(data => {
     grid.insertAdjacentHTML('afterend', addonHTML);
   }
 
-  // Видеопортрет — отдельным блоком после аддона
   if (videoCard) {
     const addon = document.querySelector('.pricing-addon');
     const wrapper = document.createElement('div');
@@ -41,7 +54,6 @@ fetch('data/pricing.json').then(r => r.json()).then(data => {
     addon.insertAdjacentElement('afterend', wrapper);
   }
 
-  // Примечание — после CTA
   if (data.note) {
     const note = document.createElement('p');
     note.className = 'pricing-note';

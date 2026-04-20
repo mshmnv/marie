@@ -87,10 +87,18 @@
   gap: 2px;
 }
 
-.pricing-price-usd {
+.price-old {
   font-size: 18px;
-  letter-spacing: 0.06em;
-  color: #bbb;
+  color: var(--red);
+  text-decoration: line-through;
+  opacity: 0.4;
+  letter-spacing: 0.04em;
+}
+
+.price-sale {
+  font-size: 28px;
+  color: var(--red);
+  letter-spacing: 0.04em;
 }
 
 .pricing-list {
@@ -206,7 +214,31 @@
 }
 .pricing-btn:hover { color: var(--red); }
 
-/* ── Note ── */
+/* ── Promo banner ── */
+.promo-banner {
+  background: var(--red);
+  color: #fff;
+  padding: 10px 5%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.promo-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  flex-shrink: 0;
+}
+
+
 .pricing-note {
   margin-top: 28px;
   font-family: 'Space Grotesk', sans-serif;
