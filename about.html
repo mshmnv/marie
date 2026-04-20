@@ -9,9 +9,21 @@
 </head>
 <body>
 
-  <nav>
-    <span class="nav-sub">prod by</span>
-    <a href="index.html" class="nav-logo">MARIE</a>
+  <div id="cursor">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <line x1="14" y1="0" x2="14" y2="10" stroke="#E8001D" stroke-width="1.5"/>
+      <line x1="14" y1="18" x2="14" y2="28" stroke="#E8001D" stroke-width="1.5"/>
+      <line x1="0" y1="14" x2="10" y2="14" stroke="#E8001D" stroke-width="1.5"/>
+      <line x1="18" y1="14" x2="28" y2="14" stroke="#E8001D" stroke-width="1.5"/>
+      <circle id="cursor-dot" cx="14" cy="14" r="2.5" fill="#E8001D"/>
+    </svg>
+  </div>
+
+  <nav id="main-nav">
+    <div class="nav-left">
+      <span class="nav-sub">prod by</span>
+      <a href="index.html" class="nav-logo">MARIE</a>
+    </div>
     <div class="nav-links">
       <a href="index.html">WORK</a>
       <a href="pricing.html">PRICES</a>
@@ -20,24 +32,15 @@
   </nav>
 
   <div class="about-wrap">
-
     <div class="about-photo">
       <img src="myPhoto.jpg" alt="Marie">
     </div>
-
     <div class="about-content">
-
+      <div class="about-name">MARIE<span class="dot">.</span></div>
       <p class="about-bio" id="about-bio"></p>
-
       <div class="about-divider"></div>
-
       <div class="about-links" id="about-links"></div>
-
     </div>
-  </div>
-
-  <div class="page-footer-cross">
-    <img src="icons/cross.png" alt="">
   </div>
 
   <footer class="site-footer">
@@ -52,7 +55,6 @@
     fetch('data/about.json').then(r => r.json()).then(data => {
       const bio = document.getElementById('about-bio');
       bio.innerHTML = data.bio.map(line => line === '' ? '<br>' : line).join('<br>');
-
       const links = document.getElementById('about-links');
       data.links.forEach(l => {
         const a = document.createElement('a');
@@ -62,6 +64,25 @@
         a.innerHTML = l.label + '<span class="link-arrow">→</span>';
         links.appendChild(a);
       });
+    });
+
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+
+    const cursor = document.getElementById('cursor');
+    let mx = -100, my = -100, cx = -100, cy = -100;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function raf() {
+      cx += (mx - cx) * 0.18;
+      cy += (my - cy) * 0.18;
+      cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+      requestAnimationFrame(raf);
+    })();
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
     });
   </script>
   <script src="grain.js"></script>

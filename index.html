@@ -9,17 +9,28 @@
 </head>
 <body>
 
-  <nav>
-    <span class="nav-sub">prod by</span>
-    <a href="index.html" class="nav-logo">MARIE</a>
+  <!-- ── CURSOR ── -->
+  <div id="cursor">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <line x1="14" y1="0" x2="14" y2="10" stroke="#E8001D" stroke-width="1.5"/>
+      <line x1="14" y1="18" x2="14" y2="28" stroke="#E8001D" stroke-width="1.5"/>
+      <line x1="0" y1="14" x2="10" y2="14" stroke="#E8001D" stroke-width="1.5"/>
+      <line x1="18" y1="14" x2="28" y2="14" stroke="#E8001D" stroke-width="1.5"/>
+      <circle id="cursor-dot" cx="14" cy="14" r="2.5" fill="#E8001D"/>
+    </svg>
+  </div>
+
+  <nav id="main-nav">
+    <div class="nav-left">
+      <span class="nav-sub">prod by</span>
+      <a href="index.html" class="nav-logo">MARIE</a>
+    </div>
     <div class="nav-links">
       <a href="index.html" class="active">WORK</a>
       <a href="pricing.html">PRICES</a>
       <a href="about.html">ABOUT</a>
     </div>
   </nav>
-
-  <div class="quote-sidebar">I shoot what disappears in a second. Not staged — alive, accidental, real. Beauty, to me, has always been slightly unplanned.</div>
 
   <div class="gallery-intro">
     <div class="gallery-intro-quote">I shoot what disappears in a second. Not staged — alive, accidental, real. Beauty, to me, has always been slightly unplanned.</div>
@@ -29,8 +40,12 @@
     <div class="gallery-grid" id="gallery"></div>
   </div>
 
-  <div class="page-footer-cross">
-    <img src="icons/cross.png" alt="">
+  <div class="cta-section">
+    <div class="cta-big">СНИМЕМ?</div>
+    <div class="cta-right">
+      <p class="cta-tagline">живые кадры, без постановки,<br>только настоящие моменты</p>
+      <a href="https://t.me/miinaeva" class="cta-btn" target="_blank" rel="noopener">написать мне →</a>
+    </div>
   </div>
 
   <footer class="site-footer">
@@ -45,11 +60,33 @@
     <button id="lb-close">×</button>
     <button id="lb-prev">&#8592;</button>
     <button id="lb-next">&#8594;</button>
-    <img id="lb-img" src="" alt="">
+    <img id="lb-img" alt="">
     <iframe id="lb-video" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
   </div>
 
   <script src="script.js"></script>
   <script src="grain.js"></script>
+  <script>
+    // ── Sticky nav ──
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+
+    // ── Custom cursor ──
+    const cursor = document.getElementById('cursor');
+    let mx = -100, my = -100, cx = -100, cy = -100;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function raf() {
+      cx += (mx - cx) * 0.18;
+      cy += (my - cy) * 0.18;
+      cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+      requestAnimationFrame(raf);
+    })();
+    document.querySelectorAll('a, button, .photo-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+    });
+  </script>
 </body>
 </html>
