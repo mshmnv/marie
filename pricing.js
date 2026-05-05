@@ -40,7 +40,7 @@ fetch('data/pricing.json').then(r => r.json()).then(data => {
     const addonHTML = `
       <div class="pricing-addon">
         <span class="pricing-addon-label">${a.label}</span>
-        <span class="pricing-addon-price">${a.priceRub} <span class="pricing-price-usd">${a.priceUsd}</span></span>
+        <span class="pricing-addon-price">${a.priceRub}</span>
         <p class="pricing-addon-desc">${a.desc}</p>
       </div>`;
     grid.insertAdjacentHTML('afterend', addonHTML);
