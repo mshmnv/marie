@@ -12,11 +12,11 @@
 
   <div id="cursor">
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-      <line x1="14" y1="0" x2="14" y2="10" stroke="#E8001D" stroke-width="1.5"/>
-      <line x1="14" y1="18" x2="14" y2="28" stroke="#E8001D" stroke-width="1.5"/>
-      <line x1="0" y1="14" x2="10" y2="14" stroke="#E8001D" stroke-width="1.5"/>
-      <line x1="18" y1="14" x2="28" y2="14" stroke="#E8001D" stroke-width="1.5"/>
-      <circle id="cursor-dot" cx="14" cy="14" r="2.5" fill="#E8001D"/>
+      <line x1="14" y1="0" x2="14" y2="10" stroke="#E8001D" stroke-width="1.5"></line>
+      <line x1="14" y1="18" x2="14" y2="28" stroke="#E8001D" stroke-width="1.5"></line>
+      <line x1="0" y1="14" x2="10" y2="14" stroke="#E8001D" stroke-width="1.5"></line>
+      <line x1="18" y1="14" x2="28" y2="14" stroke="#E8001D" stroke-width="1.5"></line>
+      <circle id="cursor-dot" cx="14" cy="14" r="2.5" fill="#E8001D"></circle>
     </svg>
   </div>
 
@@ -37,7 +37,26 @@
       <div class="pricing-title">СЪЁМКА</div>
       <p class="pricing-lead">Снимаю людей такими, какие они есть —<br>без постановки, без напряжения.<br>Только живые кадры.</p>
     </div>
-    <div class="pricing-grid"></div>
+
+    <!-- ── ФОТО ───────────────────────────────────────────────── -->
+    <section class="pricing-section">
+      <h2 class="pricing-section-title">
+        <span class="pricing-section-title-text">ФОТО</span>
+        <span class="pricing-section-eng">photo</span>
+      </h2>
+      <div class="pricing-grid pricing-grid-2" data-grid="photo"></div>
+      <div data-addon-slot></div>
+    </section>
+
+    <!-- ── ВИДЕО ──────────────────────────────────────────────── -->
+    <section class="pricing-section">
+      <h2 class="pricing-section-title">
+        <span class="pricing-section-title-text">ВИДЕО</span>
+        <span class="pricing-section-eng">video</span>
+      </h2>
+      <div class="pricing-grid pricing-grid-3" data-grid="video"></div>
+    </section>
+
     <div class="pricing-how">
       <div class="pricing-how-title">КАК ЭТО РАБОТАЕТ</div>
       <ol class="pricing-steps">
@@ -55,12 +74,12 @@
   <footer class="site-footer">
     <div class="site-footer-name">MARIE</div>
     <div class="site-footer-links">
-      <a href="mailto:minaevamarie@gmail.com">minaevamarie@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#076a6e69666271666a66756e6247606a666e6b2964686a"><span class="__cf_email__" data-cfemail="305d595e515546515d5142595570575d51595c1e535f5d">[email&#160;protected]</span></a>
       <a href="https://www.instagram.com/miinaeva/" target="_blank" rel="noopener">@miinaeva</a>
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 30);
@@ -75,10 +94,17 @@
       cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
       requestAnimationFrame(raf);
     })();
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
-    });
+    // Re-bind hover after pricing.js injects cards
+    function bindCursorHover() {
+      document.querySelectorAll('a, button').forEach(el => {
+        if (el.dataset.cursorBound) return;
+        el.dataset.cursorBound = '1';
+        el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+      });
+    }
+    bindCursorHover();
+    window.addEventListener('load', bindCursorHover);
   </script>
   <script src="pricing.js"></script>
 </body>

@@ -28,38 +28,67 @@
   max-width: 480px;
 }
 
+/* ── Section header (ФОТО / ВИДЕО) ── */
+.pricing-section { margin-bottom: 56px; }
+.pricing-section:last-of-type { margin-bottom: 48px; }
+
+.pricing-section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(64px, 12vw, 120px);
+  line-height: 0.85;
+  letter-spacing: 0.03em;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  font-weight: normal;
+}
+.pricing-section-title-text {
+  filter: blur(2.5px);
+  display: inline-block;
+}
+.pricing-section-eng {
+  font-family: 'Shlapak', cursive;
+  font-size: clamp(24px, 3.4vw, 36px);
+  color: var(--red);
+  letter-spacing: 0;
+  padding-bottom: 12px;
+  font-weight: normal;
+  line-height: 1;
+}
+
 /* ── Cards ── */
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 0;
   border: 1px solid rgba(0,0,0,0.09);
-  margin-bottom: 48px;
+}
+.pricing-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.pricing-grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+/* Tighter type in 3-col layout where columns are narrow */
+.pricing-grid-3 .pricing-type { font-size: 28px; }
+.pricing-grid-3 .pricing-price { font-size: 26px; }
+.pricing-grid-3 .pricing-card-header {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .pricing-card {
-  padding: 32px 20px 36px;
+  padding: 32px 22px 34px;
   border-right: 1px solid rgba(0,0,0,0.09);
   border-top: 3px solid var(--red);
   position: relative;
+  min-width: 0;
 }
-/* ── Video card standalone ── */
-.pricing-card-standalone {
-  border: 1px solid rgba(0,0,0,0.09);
-  border-top: 3px solid rgba(0,0,0,0.15);
-  margin-bottom: 48px;
-}
-.pricing-card-standalone .pricing-card {
-  border-right: none;
-  border-top: none;
-  grid-column: unset;
-}
+.pricing-grid > .pricing-card:last-child { border-right: none; }
 
 .pricing-card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   padding-bottom: 14px;
   border-bottom: 1px solid rgba(0,0,0,0.07);
   gap: 12px;
@@ -71,8 +100,31 @@
   letter-spacing: 0.06em;
   color: var(--black);
   line-height: 1;
-  word-break: break-word;
-  hyphens: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+.pricing-type-sub {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--black);
+  opacity: 0.55;
+  line-height: 1.1;
+  max-width: 18ch;
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+.pricing-type-eng {
+  font-family: 'Shlapak', cursive;
+  font-size: 14px;
+  color: var(--red);
+  letter-spacing: 0.02em;
+  margin-top: 2px;
+  text-transform: lowercase;
+  font-weight: normal;
 }
 
 .pricing-price {
@@ -101,6 +153,29 @@
   letter-spacing: 0.04em;
 }
 
+/* ── "идеально для…" line on video cards ── */
+.pricing-forwhom {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #444;
+  letter-spacing: 0.04em;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed rgba(0,0,0,0.07);
+}
+.pricing-forwhom-tag {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-right: 8px;
+  display: inline-block;
+  transform: translateY(-1px);
+}
+
 .pricing-list {
   list-style: none;
   display: flex;
@@ -125,17 +200,18 @@
   color: var(--red);
   font-size: 10px;
 }
+.pricing-grid-3 .pricing-list li { letter-spacing: 0.04em; }
 
 /* ── Addon ── */
 .pricing-addon {
   border: 1px solid rgba(0,0,0,0.09);
   border-top: 3px solid rgba(0,0,0,0.1);
-  padding: 22px 20px;
+  padding: 22px 22px;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   gap: 12px 20px;
-  margin-bottom: 64px;
+  margin-top: -1px;
 }
 
 .pricing-addon-label {
@@ -148,10 +224,8 @@
   font-family: 'Bebas Neue', sans-serif;
   font-size: 22px;
   color: var(--red);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
+  letter-spacing: 0.04em;
+  margin-left: auto;
 }
 
 .pricing-addon-desc {
@@ -250,11 +324,21 @@
 }
 
 /* ── Mobile ── */
+@media (max-width: 720px) {
+  .pricing-grid-3 { grid-template-columns: 1fr; }
+  .pricing-grid-3 > .pricing-card { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.09); }
+  .pricing-grid-3 > .pricing-card:last-child { border-bottom: none; }
+  .pricing-grid-3 .pricing-card-header { flex-direction: row; gap: 12px; }
+  .pricing-grid-3 .pricing-type { font-size: 32px; }
+  .pricing-grid-3 .pricing-price { font-size: 28px; }
+}
+
 @media (max-width: 600px) {
-  .pricing-grid { grid-template-columns: 1fr; }
-  .pricing-card:nth-child(2) { border-right: none; }
-  .pricing-card { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.09); }
-  .pricing-card:last-child { border-bottom: none; }
+  .pricing-grid-2 { grid-template-columns: 1fr; }
+  .pricing-grid-2 > .pricing-card { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.09); }
+  .pricing-grid-2 > .pricing-card:last-child { border-bottom: none; }
   .pricing-hero { margin-bottom: 40px; }
   .pricing-title { filter: blur(2px); }
+  .pricing-section-title { filter: none; }
+  .pricing-section-title-text { filter: blur(1.5px); }
 }
