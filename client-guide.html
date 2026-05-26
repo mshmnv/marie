@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>КАК ПОДГОТОВИТЬСЯ К СЪЁМКЕ — MARIE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #f7f6f3;
+      color: #080808;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 72px 40px 80px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 72px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(8,8,8,0.12);
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 2px;
+      line-height: 1;
+      color: #080808;
+      filter: blur(1.5px);
+      transition: filter 0.3s ease;
+    }
+
+    .logo:hover {
+      filter: blur(0px);
+    }
+
+    .header-sub {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      opacity: 0.45;
+      margin-top: 6px;
+    }
+
+    /* Hero */
+    .hero {
+      margin-bottom: 64px;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.4;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(52px, 10vw, 80px);
+      line-height: 0.95;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+
+    .hero-text {
+      font-size: 15px;
+      opacity: 0.65;
+      max-width: 420px;
+      line-height: 1.75;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 52px;
+    }
+
+    .section-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: #c0392b;
+      opacity: 0.75;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+
+    .section-body {
+      font-size: 15px;
+      line-height: 1.8;
+      opacity: 0.75;
+    }
+
+    .section-body p + p {
+      margin-top: 10px;
+    }
+
+    /* Tags — good/avoid */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+
+    .tag-good {
+      background: rgba(8,8,8,0.07);
+      color: #080808;
+    }
+
+    .tag-avoid {
+      background: transparent;
+      border: 1px solid rgba(8,8,8,0.2);
+      color: rgba(8,8,8,0.5);
+      text-decoration: line-through;
+    }
+
+    /* Highlight block */
+    .highlight {
+      background: #080808;
+      color: #f7f6f3;
+      padding: 28px 32px;
+      border-radius: 4px;
+      margin: 20px 0;
+    }
+
+    .highlight p {
+      opacity: 0.85;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .highlight strong {
+      font-weight: 500;
+      opacity: 1;
+      color: #f7f6f3;
+    }
+
+    /* Divider */
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(192, 57, 43, 0.3);
+      margin: 52px 0;
+    }
+
+    /* Details grid */
+    .details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .detail-item {
+      padding: 20px;
+      border: 1px solid rgba(8,8,8,0.1);
+      border-radius: 4px;
+    }
+
+    .detail-label {
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      opacity: 0.35;
+      margin-bottom: 6px;
+    }
+
+    .detail-value {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 72px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(8,8,8,0.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      filter: blur(1.5px);
+      transition: filter 0.3s ease;
+    }
+
+    .footer-name:hover {
+      filter: blur(0px);
+    }
+
+    .footer-contacts {
+      font-size: 12px;
+      opacity: 0.45;
+      text-align: right;
+      line-height: 1.8;
+    }
+
+    .footer-contacts a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    @media (max-width: 520px) {
+      .page { padding: 48px 24px 60px; }
+      .header { flex-direction: column; gap: 4px; }
+      .details { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; align-items: flex-start; }
+      .footer-contacts { text-align: left; }
+    }
+
+    @media print {
+      body { background: white; }
+      .page { padding: 48px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="header">
+      <div>
+        <div class="logo">MARIE</div>
+        <div class="header-sub">Фотограф · Москва</div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-eyebrow">Для тебя</div>
+      <h1 class="hero-title">Как подго-<br>товиться<br>к съёмке</h1>
+      <p class="hero-text">Привет! Рада что мы будем снимать вместе. Прочитай этот гайд заранее — чтобы в день съёмки думать только о кайфе, а не об образах.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-number">01</div>
+      <h2 class="section-title">Образы</h2>
+      <div class="section-body">
+        <p>Возьми <strong>2–3 образа</strong>. Начнём с самого "одетого" и будем постепенно упрощать — так обычно комфортнее всего входить в процесс.</p>
+      </div>
+      <div class="tags">
+        <span class="tag tag-good">Комфортная для тебя одежда</span>
+        <span class="tag tag-good">Любые цвета, которые тебе идут</span>
+        <span class="tag tag-avoid">Крупные логотипы</span>
+        <span class="tag tag-avoid">Мятая одежда</span>
+      </div>
+    </section>
+
+    <div class="highlight">
+      <p><strong>Важно: </strong>За день до съёмки пришли мне фото в каждом образе. Я посмотрю и подскажу, если что-то лучше заменить — чтобы мы не теряли время в день съёмки.</p>
+    </div>
+
+    <section class="section">
+      <div class="section-number">02</div>
+      <h2 class="section-title">Волосы и макияж</h2>
+      <div class="section-body">
+        <p>Делай так, как тебе привычно и комфортно. Никакого "специального" образа не нужно — фото выглядят естественно когда ты выглядишь как ты.</p>
+        <p>Если планируешь укладку или макияж — делай за 1–1,5 часа до съёмки, чтобы всё успело "улечься".</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-number">03</div>
+      <h2 class="section-title">День съёмки</h2>
+      <div class="section-body">
+        <p>Постарайся выспаться — это реально видно на фото. Возьми воду и лёгкий перекус. Приходи в хорошем настроении — всё остальное моя задача.</p>
+        <p>Я буду направлять тебя и подсказывать позы — ничего придумывать самой не надо.</p>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <section class="section">
+      <div class="section-number">04</div>
+      <h2 class="section-title">Что ты получишь</h2>
+      <div class="details">
+        <div class="detail-item">
+          <div class="detail-label">Длительность</div>
+          <div class="detail-value">1,5–2 часа</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Фотографий</div>
+          <div class="detail-value">30 готовых фото</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Срок обработки</div>
+          <div class="detail-value">7 дней</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <section class="section">
+      <div class="section-number">05</div>
+      <h2 class="section-title">Про фотографии</h2>
+      <div class="section-body">
+        <p>Моё портфолио — это и есть мудборд нашей съёмки. Записываясь ко мне, ты доверяешь моему взгляду и стилю — именно это я и принесу в кадр.</p>
+        <p>Если у тебя есть особые пожелания или референсы — давай обсудим заранее, я всегда открыта к диалогу.</p>
+        <p>Снятые материалы остаются моей интеллектуальной собственностью, и я могу использовать их в портфолио и соцсетях. Если ты не хочешь, чтобы какой-то конкретный кадр появился в открытом доступе — просто скажи, это всегда можно обсудить.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-name">MARIE</div>
+      <div class="footer-contacts">
+        <a href="https://t.me/miinaeva">@miinaeva</a><br>
+        <a href="mailto:minaevamarie@gmail.com">minaevamarie@gmail.com</a>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
