@@ -38,14 +38,8 @@
   document.body.insertBefore(svg, document.body.firstChild);
 })();
 
-// ── Photos загружаются из photos.json (обнови запуском: node scan.js) ──────
+// ── Photos загружаются из photos.json ──────
 let photos = [];
-
-const stampedPhotos = new Set(); // кресты убраны
-
-// ── Torn paper images ─────────────────────────────────────────
-const tornStrips = ['icons/torn-h1.jpg', 'icons/torn-h2.jpg'];
-const tornNote   = 'icons/torn-note.jpg';
 
 // ── Build gallery ─────────────────────────────────────────────
 const grid = document.getElementById('gallery');
@@ -65,20 +59,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.08 });
 
-function buildGallery(photos, scatter) {
-  const scatterMap = {};
-  scatter.forEach(s => {
-    if (!scatterMap[s.after]) scatterMap[s.after] = [];
-    scatterMap[s.after].push(s);
-  });
-
-// Элементы перед первым фото (after: -1)
-(scatterMap[-1] || []).forEach(s => {
-  const el = document.createElement('div');
-  renderScatter(s, el);
-  grid.appendChild(el);
-});
-
+function buildGallery(photos) {
 // Строка для main-фото (видео + первое фото в ряд)
 const mainRow = document.createElement('div');
 mainRow.className = 'gallery-main-row';
@@ -107,21 +88,6 @@ photos.forEach((photo, i) => {
     img.loading = 'lazy';
     img.addEventListener('error', () => card.style.display = 'none');
     inner.appendChild(img);
-
-    // Red × stamp on selected photos
-    if (stampedPhotos.has(i)) {
-      const x = document.createElement('div');
-      x.className = 'photo-x';
-      if (i % 2 === 0) {
-        x.style.top = 'auto'; x.style.bottom = '5%';
-        x.style.left = 'auto'; x.style.right = '4%';
-      }
-      const xImg = document.createElement('img');
-      xImg.src = 'icons/cross.png';
-      xImg.alt = '';
-      x.appendChild(xImg);
-      inner.appendChild(x);
-    }
   }
 
   card.appendChild(inner);
@@ -152,153 +118,15 @@ photos.forEach((photo, i) => {
   } else {
     grid.appendChild(card);
   }
-
-  // Scatter items after this photo
-  (scatterMap[i] || []).forEach(s => {
-    const el = document.createElement('div');
-    renderScatter(s, el);
-    grid.appendChild(el);
-  });
 });
 } // end buildGallery
 
-function renderScatter(s, el) {
-    const tilt = (Math.random() * 10 - 5).toFixed(1);
-
-    switch (s.type) {
-      case 'word': {
-        el.className = ['st-word', s.mod || ''].join(' ').trim();
-        el.textContent = s.text;
-        let blur;
-        if (s.blur !== undefined) {
-          blur = s.blur;
-        } else {
-          const r = Math.random();
-          blur = r < 0.6
-            ? (Math.random() * 1.5).toFixed(1)
-            : r < 0.9
-            ? (2 + Math.random() * 4).toFixed(1)
-            : (7 + Math.random() * 6).toFixed(1);
-        }
-        if (parseFloat(blur) > 0.3) el.style.filter = `blur(${blur}px)`;
-        break;
-      }
-
-      case 'phrase':
-        el.className = ['st-phrase', s.mod || ''].join(' ').trim();
-        el.textContent = '— ' + s.text;
-        el.style.transform = `rotate(${tilt}deg)`;
-        break;
-
-      case 'illegible':
-        el.className = 'st-illegible';
-        el.textContent = s.text;
-        el.style.transform = `rotate(${s.rot ?? -38}deg)`;
-        // Extra randomness to feel handwritten
-        el.style.marginLeft = (Math.random() * 30) + 'px';
-        break;
-
-      case 'hand':
-        el.className = 'st-hand';
-        el.textContent = s.text;
-        el.style.transform = `rotate(${tilt}deg)`;
-        break;
-
-      case 'label':
-        el.className = 'st-label';
-        el.textContent = s.text;
-        break;
-
-      case 'quote':
-        el.className = 'st-quote';
-        el.textContent = s.text;
-        break;
-
-      case 'x': {
-        el.className = 'st-x';
-        el.style.transform = `rotate(${tilt}deg)`;
-        const xImg = document.createElement('img');
-        xImg.src = 'icons/cross.png';
-        xImg.alt = '';
-        el.appendChild(xImg);
-        break;
-      }
-
-      case 'rule':
-        el.className = 'st-rule';
-        break;
-
-      case 'blur-word':
-        el.className = ['st-blur', s.mod || ''].join(' ').trim();
-        el.textContent = s.text;
-        break;
-
-      case 'shot-img': {
-        el.className = 'st-shot';
-        el.style.transform = `rotate(${tilt}deg)`;
-        const shotImg = document.createElement('img');
-        shotImg.src = 'icons/shot.png';
-        shotImg.alt = 'Shot';
-        el.appendChild(shotImg);
-        break;
-      }
-
-      case 'circled': {
-        el.className = 'st-circled';
-        el.style.transform = `rotate(${tilt}deg)`;
-        const span = document.createElement('span');
-        span.className = ['st-circled-text', s.mod || ''].join(' ').trim();
-        span.textContent = s.text;
-        const circleImg = document.createElement('img');
-        circleImg.src = 'icons/cirle.png';
-        circleImg.alt = '';
-        circleImg.className = 'st-circle-img';
-        el.appendChild(span);
-        el.appendChild(circleImg);
-        break;
-      }
-
-      case 'paper-break': {
-        el.className = 'paper-break';
-        const img = document.createElement('img');
-        img.src = tornStrips[s.img ?? 0];
-        img.alt = '';
-        el.appendChild(img);
-        if (s.text) {
-          const label = document.createElement('span');
-          label.className = 'paper-break-text';
-          label.textContent = s.text;
-          el.appendChild(label);
-        }
-        break;
-      }
-
-      case 'paper-note': {
-        el.className = 'paper-note';
-        el.style.transform = `rotate(${tilt}deg)`;
-        const img = document.createElement('img');
-        img.src = tornNote;
-        img.alt = '';
-        el.appendChild(img);
-        if (s.text) {
-          const txt = document.createElement('span');
-          txt.className = 'paper-note-text';
-          txt.textContent = s.text;
-          el.appendChild(txt);
-        }
-        break;
-      }
-    }
-} // end renderScatter
-
-Promise.all([
-  fetch('data/photos.json').then(r => r.json()),
-  fetch('data/scatter.json').then(r => r.json()),
-]).then(([list, scatter]) => {
-  const sorted = [...list.filter(p => p.main), ...list.filter(p => !p.main)];
-  photos = sorted;
-  buildGallery(photos, scatter);
-});
+fetch('data/photos.json')
+  .then(r => r.json())
+  .then(list => {
+    photos = [...list.filter(p => p.main), ...list.filter(p => !p.main)];
+    buildGallery(photos);
+  });
 
 // ── Lightbox ──────────────────────────────────────────────────
 const lb       = document.getElementById('lightbox');
