@@ -223,6 +223,9 @@ nav.scrolled {
   aspect-ratio: 9 / 16;
   background: #111;
 }
+.gallery-main-row .photo-inner:has(video) {
+  aspect-ratio: 11 / 14;
+}
 .photo-inner:has(video) video {
   position: absolute;
   inset: 0;
