@@ -55,7 +55,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 16px 5% 12px;
+  padding: 28px 5% 12px;
   background-color: var(--bg);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
   background-size: 400px 400px;
@@ -75,7 +75,7 @@ nav.scrolled {
 
 .nav-sub {
   font-family: 'Shlapak', cursive;
-  font-size: 16px;
+  font-size: 28px;
   font-weight: normal;
   color: #999;
   line-height: 1;
@@ -131,15 +131,15 @@ nav.scrolled {
 
 .gallery-grid {
   columns: 4;
-  column-gap: 8px;
+  column-gap: 28px;
 }
 
 /* Main photos row */
 .gallery-main-row {
   column-span: all;
   display: flex;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 28px;
+  margin-bottom: 28px;
   align-items: flex-start;
 }
 
@@ -155,7 +155,7 @@ nav.scrolled {
   break-inside: avoid;
   display: inline-block;
   width: 100%;
-  margin-bottom: 8px;
+  margin-bottom: 28px;
   position: relative;
   overflow: hidden;
   cursor: none;
@@ -247,7 +247,7 @@ nav.scrolled {
 
 /* ── Gallery intro ── */
 .gallery-intro {
-  padding: 24px 3% 16px;
+  padding: 24px 3% 28px;
   display: flex;
   justify-content: flex-end;
 }
@@ -294,7 +294,7 @@ nav.scrolled {
 }
 .cta-tagline {
   font-family: 'Shlapak', cursive;
-  font-size: clamp(16px, 2vw, 22px);
+  font-size: clamp(28px, 2vw, 22px);
   color: rgba(247,246,243,0.4);
   line-height: 1.6;
   text-align: right;
@@ -324,7 +324,7 @@ nav.scrolled {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 16px 5% 28px;
+  padding: 28px 5% 28px;
   margin-top: 0;
 }
 
@@ -547,7 +547,7 @@ nav.scrolled {
   .about-bio { font-size: clamp(18px, 5vw, 24px); margin-bottom: 1em; }
   .about-link { padding: 14px 0; font-size: 9px; }
 
-  #lb-close { font-size: 36px; top: 14px; right: 16px; }
-  #lb-prev, #lb-next { font-size: 22px; padding: 16px 12px; }
+  #lb-close { font-size: 36px; top: 14px; right: 28px; }
+  #lb-prev, #lb-next { font-size: 22px; padding: 28px 12px; }
   #lb-img { max-width: 96vw; max-height: 86vh; }
 }
