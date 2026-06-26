@@ -130,7 +130,7 @@ nav.scrolled {
 .gallery-wrap { padding: 20px 3% 0 3%; position: relative; }
 
 .gallery-grid {
-  columns: 4;
+  column-width: 260px;
   column-gap: 28px;
 }
 
@@ -507,7 +507,6 @@ nav.scrolled {
    RESPONSIVE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media (max-width: 900px) {
-  .gallery-grid { columns: 3; }
   .cta-section { flex-direction: column; align-items: flex-start; }
 }
 
