@@ -22,10 +22,22 @@
 
 .pricing-lead {
   font-family: 'Shlapak', cursive;
-  font-size: clamp(18px, 2.4vw, 26px);
+  font-size: clamp(15px, 1.9vw, 21px);
   line-height: 1.7;
   color: #555;
   max-width: 480px;
+}
+
+.pricing-lead-tags {
+  margin-top: 18px;
+  font-family: 'Space Grotesk', sans-serif;
+  /* кегль подстраивается под ширину, чтобы строка не разрывалась */
+  font-size: clamp(8px, 2.1vw, 10px);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #999;
+  line-height: 1.8;
 }
 
 /* ── Section header (ФОТО / ВИДЕО) ── */
