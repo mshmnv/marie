@@ -194,6 +194,11 @@ nav.scrolled {
   backface-visibility: hidden;
 }
 
+/* Пока фото не загрузилось — резервируем место под него.
+   Без этого карточки схлопываются в нулевую высоту, все попадают
+   в первый экран, и браузер грузит всю галерею сразу вместо lazy. */
+.photo-inner img:not([data-loaded]) { aspect-ratio: 4 / 5; }
+
 .photo-inner img {
   width: 100%;
   height: auto;

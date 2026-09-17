@@ -54,16 +54,23 @@ const observer = new IntersectionObserver((entries) => {
         video.removeAttribute('data-src');
         video.play().catch(() => {});
       }
+      const img = e.target.querySelector('img[data-src]');
+      if (img) {
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+      }
       observer.unobserve(e.target);
     }
   });
-}, { threshold: 0.08 });
+  // rootMargin — начинаем грузить чуть раньше, чем карточка войдёт в экран
+}, { threshold: 0, rootMargin: '600px 0px' });
 
 function buildGallery(photos) {
 // Строка для main-фото (видео + первое фото в ряд)
 const mainRow = document.createElement('div');
 mainRow.className = 'gallery-main-row';
-grid.appendChild(mainRow);
+// добавляем верхний ряд только если есть main-карточки — иначе он оставляет пустой отступ
+if (photos.some(p => p.main)) grid.appendChild(mainRow);
 
 photos.forEach((photo, i) => {
   // Photo/video card
@@ -83,10 +90,12 @@ photos.forEach((photo, i) => {
     inner.appendChild(video);
   } else {
     const img = document.createElement('img');
-    img.src = 'photos/' + photo.src;
+    img.decoding = 'async';
     img.alt = '';
-    img.loading = 'lazy';
+    img.addEventListener('load', () => { img.dataset.loaded = '1'; });
     img.addEventListener('error', () => card.style.display = 'none');
+    // src проставляет IntersectionObserver, когда карточка подходит к экрану
+    img.dataset.src = 'photos/' + photo.src;
     inner.appendChild(img);
   }
 
