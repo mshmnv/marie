@@ -1,60 +1,45 @@
 fetch('data/pricing.json').then(r => r.json()).then(data => {
   const photoGrid = document.querySelector('[data-grid="photo"]');
-  const videoGrid = document.querySelector('[data-grid="video"]');
-  const addonSlot = document.querySelector('[data-addon-slot]');
+  const faqSlot = document.querySelector('[data-faq]');
   const disc = data.discount || 0;
 
   // ── price helpers ────────────────────────────────────────────────
   function discountedPrice(rubStr) {
     const num = parseInt(rubStr.replace(/\D/g, ''));
     const sale = Math.round(num * (1 - disc) / 100) * 100;
-    return sale.toLocaleString('ru-RU') + ' ₽';
+    return rubStr.replace(/[\d\s ]*\d/, sale.toLocaleString('ru-RU'));
   }
 
   function priceHTML(card) {
-    if (!disc) return `<span class="pricing-price">${card.priceRub}</span>`;
+    const unit = card.priceUnit ? `<span class="pricing-price-unit">${card.priceUnit}</span>` : '';
+    if (!disc) return `<span class="pricing-price">${card.priceRub}${unit}</span>`;
     return `
       <span class="pricing-price">
         <span class="price-old">${card.priceRub}</span>
-        <span class="price-sale">${discountedPrice(card.priceRub)}</span>
+        <span class="price-sale">${discountedPrice(card.priceRub)}${unit}</span>
       </span>`;
   }
 
-  // ── photo card (existing schema) ─────────────────────────────────
+  // ── photo card ───────────────────────────────────────────────────
   function photoCardHTML(card) {
     const items = card.features.map(f => `<li>${f}</li>`).join('');
-    return `
-      <div class="pricing-card">
-        <div class="pricing-card-header">
-          <span class="pricing-type">${card.type}</span>
-          ${priceHTML(card)}
-        </div>
-        <ul class="pricing-list">${items}</ul>
-      </div>`;
-  }
-
-  // ── video card (extended schema: eng + typeSub + forWhom) ────────
-  function videoCardHTML(card) {
-    const items = card.features.map(f => `<li>${f}</li>`).join('');
-    // Long single-word titles get split for narrow 3-col cards
-    const displayType = card.type === 'ВИДЕОПОРТРЕТ' ? 'ВИДЕО<br>ПОРТРЕТ' : card.type;
-    const sub = card.typeSub ? `<span class="pricing-type-sub">${card.typeSub}</span>` : '';
-    const eng = card.eng ? `<span class="pricing-type-eng">${card.eng}</span>` : '';
-    const forWhom = card.forWhom
-      ? `<p class="pricing-forwhom"><span class="pricing-forwhom-tag">идеально</span>${card.forWhom}</p>`
+    const media = card.photo
+      ? `<div class="pricing-card-media">
+           <img src="${card.photo}" alt="${card.type}" loading="lazy">
+         </div>`
       : '';
     return `
       <div class="pricing-card">
-        <div class="pricing-card-header">
-          <span class="pricing-type">
-            ${displayType}
-            ${sub}
-            ${eng}
-          </span>
-          ${priceHTML(card)}
+        <div class="pricing-card-inner">
+          ${media}
+          <div class="pricing-card-body">
+            <div class="pricing-card-header">
+              <span class="pricing-type">${card.type}</span>
+              ${priceHTML(card)}
+            </div>
+            <ul class="pricing-list">${items}</ul>
+          </div>
         </div>
-        ${forWhom}
-        <ul class="pricing-list">${items}</ul>
       </div>`;
   }
 
@@ -63,19 +48,13 @@ fetch('data/pricing.json').then(r => r.json()).then(data => {
     photoGrid.insertAdjacentHTML('beforeend', photoCardHTML(c));
   });
 
-  if (data.photo?.addon) {
-    const a = data.photo.addon;
-    addonSlot.insertAdjacentHTML('beforeend', `
-      <div class="pricing-addon">
-        <span class="pricing-addon-label">${a.label}</span>
-        <span class="pricing-addon-price">${a.priceRub}</span>
-        <p class="pricing-addon-desc">${a.desc}</p>
-      </div>`);
-  }
-
-  // ── render video section ─────────────────────────────────────────
-  (data.video?.cards || []).forEach(c => {
-    videoGrid.insertAdjacentHTML('beforeend', videoCardHTML(c));
+  // ── render FAQ ───────────────────────────────────────────────────
+  (data.faq || []).forEach(item => {
+    faqSlot.insertAdjacentHTML('beforeend', `
+      <details class="faq-item">
+        <summary class="faq-q">${item.q}</summary>
+        <p class="faq-a">${item.a}</p>
+      </details>`);
   });
 
   // ── footer note ──────────────────────────────────────────────────

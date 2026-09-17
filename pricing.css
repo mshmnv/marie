@@ -76,6 +76,32 @@
   gap: 10px;
 }
 
+/* Stacked full-width cards (photo + content) */
+.pricing-grid-1 > .pricing-card { border-right: none; }
+.pricing-grid-1 > .pricing-card + .pricing-card { border-top: 1px solid rgba(0,0,0,0.09); }
+
+.pricing-card-inner {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+.pricing-card-media img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+}
+.pricing-card-body { min-width: 0; }
+
+.pricing-price-unit {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
 .pricing-card {
   padding: 32px 22px 34px;
   border-right: 1px solid rgba(0,0,0,0.09);
@@ -97,7 +123,7 @@
 
 .pricing-type {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 32px;
+  font-size: 30px;
   letter-spacing: 0.06em;
   color: var(--black);
   line-height: 1;
@@ -238,6 +264,59 @@
   line-height: 1.6;
 }
 
+/* ── FAQ ── */
+.pricing-faq { margin-bottom: 64px; }
+
+.pricing-faq-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 6vw, 64px);
+  letter-spacing: 0.04em;
+  margin-bottom: 24px;
+  font-weight: normal;
+}
+
+.faq-item { border-bottom: 1px solid rgba(0,0,0,0.07); }
+.faq-item:first-of-type { border-top: 1px solid rgba(0,0,0,0.07); }
+
+.faq-q {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #333;
+  padding: 18px 40px 18px 0;
+  position: relative;
+  list-style: none;
+  transition: color 0.2s;
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q:hover { color: var(--red); }
+
+.faq-q::after {
+  content: '+';
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--red);
+}
+.faq-item[open] .faq-q::after { content: '–'; }
+
+.faq-a {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #555;
+  max-width: 620px;
+  padding: 0 40px 22px 0;
+  margin-top: -4px;
+}
+
 /* ── How it works ── */
 .pricing-how { margin-bottom: 64px; }
 
@@ -335,6 +414,10 @@
 }
 
 @media (max-width: 600px) {
+  .pricing-card-inner { grid-template-columns: 1fr; gap: 22px; }
+  .pricing-card-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .pricing-card-header .pricing-price { align-items: flex-start; }
+
   .pricing-grid-2 { grid-template-columns: 1fr; }
   .pricing-grid-2 > .pricing-card { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.09); }
   .pricing-grid-2 > .pricing-card:last-child { border-bottom: none; }

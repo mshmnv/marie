@@ -27,6 +27,7 @@
     </div>
     <div class="nav-links">
       <a href="index.html">WORK</a>
+      <a href="pricing.html" class="active">PRICES</a>
       <a href="about.html">ABOUT</a>
     </div>
   </nav>
@@ -44,16 +45,12 @@
         <span class="pricing-section-eng">photo</span>
       </h2>
       <div class="pricing-grid pricing-grid-1" data-grid="photo"></div>
-      <div data-addon-slot></div>
     </section>
 
-    <!-- ── ВИДЕО ──────────────────────────────────────────────── -->
-    <section class="pricing-section">
-      <h2 class="pricing-section-title">
-        <span class="pricing-section-title-text">ВИДЕО</span>
-        <span class="pricing-section-eng">video</span>
-      </h2>
-      <div class="pricing-grid pricing-grid-3" data-grid="video"></div>
+    <!-- ── FAQ ────────────────────────────────────────────────── -->
+    <section class="pricing-faq">
+      <h2 class="pricing-faq-title">ВОПРОСЫ</h2>
+      <div data-faq></div>
     </section>
 
     <div class="pricing-how">
@@ -73,12 +70,12 @@
   <footer class="site-footer">
     <div class="site-footer-name">MARIE</div>
     <div class="site-footer-links">
-      <a href="/cdn-cgi/l/email-protection#076a6e69666271666a66756e6247606a666e6b2964686a"><span class="__cf_email__" data-cfemail="305d595e515546515d5142595570575d51595c1e535f5d">[email&#160;protected]</span></a>
+      <a href="mailto:minaevamarie@gmail.com">minaevamarie@gmail.com</a>
       <a href="https://www.instagram.com/miinaeva/" target="_blank" rel="noopener">@miinaeva</a>
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 30);
@@ -95,7 +92,7 @@
     })();
     // Re-bind hover after pricing.js injects cards
     function bindCursorHover() {
-      document.querySelectorAll('a, button').forEach(el => {
+      document.querySelectorAll('a, button, summary').forEach(el => {
         if (el.dataset.cursorBound) return;
         el.dataset.cursorBound = '1';
         el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
