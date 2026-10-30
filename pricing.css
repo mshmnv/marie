@@ -24,6 +24,7 @@
   font-family: 'Shlapak', cursive;
   font-size: clamp(15px, 1.9vw, 21px);
   line-height: 1.7;
+  white-space: pre-line;
   color: #555;
   max-width: 480px;
 }

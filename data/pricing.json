@@ -5,17 +5,41 @@
       {
         "type": "ЛИЧНАЯ СЪЁМКА",
         "priceRub": "10 000 ₽",
+        "priceEur": "€200",
         "photo": "photos/pricing/personal.jpg",
         "features": [
           "1,5–2 часа",
           "20 кадров в авторской обработке, лёгкая ретушь",
           "готово через 7 дней",
           "помогу с образом и локацией, уметь позировать не нужно"
-        ]
+        ],
+        "translations": {
+          "en": {
+            "type": "PERSONAL PHOTOSHOOT",
+            "priceEur": "€200",
+            "features": [
+              "1.5–2 hours",
+              "20 edited photos with light retouching",
+              "Ready in 7 days",
+              "I’ll help you choose your outfit and location. No posing experience needed."
+            ]
+          },
+          "es": {
+            "type": "SESIÓN PERSONAL",
+            "priceEur": "200 €",
+            "features": [
+              "1,5–2 horas",
+              "20 fotos editadas con retoque ligero",
+              "Entrega en 7 días",
+              "Te ayudo con el vestuario y la ubicación. No necesitas saber posar."
+            ]
+          }
+        }
       },
       {
         "type": "БРЕНДЫ",
         "priceRub": "от 12 000 ₽",
+        "priceEur": "from €180",
         "priceUnit": "/ час",
         "photo": "photos/pricing/brands.jpg",
         "features": [
@@ -23,31 +47,113 @@
           "от 2 часов",
           "права на публикацию в соцсетях и на сайте бренда включены",
           "объём кадров, сроки и условия обсуждаем под задачу"
-        ]
+        ],
+        "translations": {
+          "en": {
+            "type": "BRAND PHOTOGRAPHY",
+            "priceEur": "from €180",
+            "priceUnit": "/ hour",
+            "features": [
+              "Content for social media and websites: lookbooks, campaign images and behind-the-scenes",
+              "2-hour minimum",
+              "Social media and website usage rights included",
+              "Image count, delivery time and other terms tailored to the project"
+            ]
+          },
+          "es": {
+            "type": "FOTOGRAFÍA PARA MARCAS",
+            "priceEur": "desde 180 €",
+            "priceUnit": "/ hora",
+            "features": [
+              "Contenido para redes sociales y web: lookbook, imagen de marca y backstage",
+              "Mínimo 2 horas",
+              "Incluye derechos de uso en redes sociales y en la web de la marca",
+              "Número de fotos, plazos y condiciones según el proyecto"
+            ]
+          }
+        }
       }
     ]
   },
   "faq": [
     {
       "q": "Я не умею позировать",
-      "a": "И не нужно. Я направляю в процессе — подсказываю позу, поворот, что делать с руками. К середине съёмки про камеру обычно уже никто не помнит."
+      "a": "И не нужно. Я направляю в процессе — подсказываю позу, поворот, что делать с руками. К середине съёмки про камеру обычно уже никто не помнит.",
+      "translations": {
+        "en": {
+          "q": "I don’t know how to pose",
+          "a": "You don’t need to. I’ll guide you throughout the shoot with simple prompts for your pose, movement and hands. Usually, by the middle of the session, you’ve forgotten about the camera."
+        },
+        "es": {
+          "q": "No sé posar",
+          "a": "No hace falta. Te guío durante la sesión con indicaciones sencillas sobre la postura, el movimiento y las manos. Normalmente, a mitad de la sesión ya te olvidas de la cámara."
+        }
+      }
     },
     {
       "q": "Сколько образов брать и какие?",
-      "a": "Бери 2–3 образа. Лучше всего работают однотонные базовые вещи нейтральных природных цветов и многослойность — она всегда выглядит объёмно и дорого. Яркие принты и крупные логотипы отвлекают внимание от лица. Пришли мне фото образов на себе за 2–3 дня до съёмки — выберем лучшие сочетания вместе."
+      "a": "Бери 2–3 образа. Лучше всего работают однотонные базовые вещи нейтральных природных цветов и многослойность — она всегда выглядит объёмно и дорого. Яркие принты и крупные логотипы отвлекают внимание от лица. Пришли мне фото образов на себе за 2–3 дня до съёмки — выберем лучшие сочетания вместе.",
+      "translations": {
+        "en": {
+          "q": "What should I wear, and how many outfits should I bring?",
+          "a": "Bring 2–3 outfits. Simple pieces in neutral, natural colours and layered looks work best. Bright prints and large logos can draw attention away from your face. Send me photos of the outfits on you 2–3 days before the shoot, and we’ll choose the best combinations together."
+        },
+        "es": {
+          "q": "¿Cuántos conjuntos llevo y cuáles?",
+          "a": "Trae 2 o 3 conjuntos. Funcionan muy bien las prendas básicas de colores naturales y neutros, y las capas, que dan volumen a las fotos. Los estampados llamativos y los logotipos grandes pueden distraer del rostro. Envíame fotos de los conjuntos puestos 2 o 3 días antes y elegiremos juntas las mejores combinaciones."
+        }
+      }
     },
     {
       "q": "Когда будут готовые фото?",
-      "a": "Через 7 дней после съёмки. Ты получаешь 20 кадров в авторской обработке с лёгкой ретушью. Исходники я не передаю."
+      "a": "Через 7 дней после съёмки. Ты получаешь 20 кадров в авторской обработке с лёгкой ретушью. Исходники я не передаю.",
+      "translations": {
+        "en": {
+          "q": "When will my photos be ready?",
+          "a": "Your photos will be ready within 7 days. You’ll receive 20 photos edited in my style with light retouching. RAW files are not included."
+        },
+        "es": {
+          "q": "¿Cuándo estarán listas las fotos?",
+          "a": "Las tendrás en 7 días. Recibirás 20 fotos editadas con mi estilo y un retoque ligero. No entrego los archivos RAW."
+        }
+      }
     },
     {
       "q": "Где снимаем и входит ли студия в стоимость?",
-      "a": "Локацию подбираем под задачу — улица, квартира, студия. Помогу выбрать. Аренда студии оплачивается отдельно."
+      "a": "Локацию подбираем под задачу — улица, квартира, студия. Помогу выбрать. Аренда студии оплачивается отдельно.",
+      "translations": {
+        "en": {
+          "q": "Where do we shoot? Is studio rental included?",
+          "a": "We’ll choose a location that fits the idea: outdoors, at home or in a studio. I’ll help you decide. Studio rental is paid separately."
+        },
+        "es": {
+          "q": "¿Dónde hacemos la sesión? ¿Está incluido el estudio?",
+          "a": "Elegiremos el lugar según la idea: exterior, casa o estudio. Te ayudo a decidir. El alquiler del estudio se paga aparte."
+        }
+      }
     },
     {
       "q": "Можно прислать референсы? Что с правами на фото?",
-      "a": "Моё портфолио — это и есть мудборд нашей съёмки: записываясь, ты доверяешь моему взгляду и стилю. Но если есть особые пожелания или референсы — обсудим заранее, я всегда открыта к диалогу. Снятые материалы остаются моей интеллектуальной собственностью, я могу показывать их в портфолио и соцсетях; если какой-то кадр не хочешь видеть в открытом доступе — просто скажи."
+      "a": "Моё портфолио — это и есть мудборд нашей съёмки: записываясь, ты доверяешь моему взгляду и стилю. Но если есть особые пожелания или референсы — обсудим заранее, я всегда открыта к диалогу. Снятые материалы остаются моей интеллектуальной собственностью, я могу показывать их в портфолио и соцсетях; если какой-то кадр не хочешь видеть в открытом доступе — просто скажи.",
+      "translations": {
+        "en": {
+          "q": "Can I send references? What about photo usage rights?",
+          "a": "My portfolio is the moodboard for our shoot: when you book, you’re trusting my eye and style. If you have specific ideas or references, we can talk them through beforehand. The photos remain my intellectual property, and I may share them in my portfolio and on social media. If there’s an image you’d prefer me not to share publicly, just tell me."
+        },
+        "es": {
+          "q": "¿Puedo enviarte referencias? ¿Qué derechos de uso tienen las fotos?",
+          "a": "Mi portfolio es el moodboard de la sesión: al reservar, confías en mi mirada y mi estilo. Si tienes ideas o referencias concretas, las hablamos antes. Las fotos siguen siendo mi propiedad intelectual y puedo compartirlas en mi portfolio y redes sociales. Si prefieres que alguna imagen no se publique, solo tienes que decírmelo."
+        }
+      }
     }
   ],
-  "note": "Исходники не передаются. Аренда студии оплачивается отдельно."
+  "note": "Исходники не передаются. Аренда студии оплачивается отдельно.",
+  "translations": {
+    "en": {
+      "note": "RAW files are not included. Studio rental is paid separately."
+    },
+    "es": {
+      "note": "No se entregan los archivos RAW. El alquiler del estudio se paga aparte."
+    }
+  }
 }

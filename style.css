@@ -126,6 +126,30 @@ nav.scrolled {
 .nav-links a.active,
 .nav-links a:hover { color: var(--red); }
 
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 2px;
+  padding-left: 12px;
+  border-left: 1px solid rgba(0,0,0,0.18);
+}
+.language-switcher button {
+  min-width: 36px;
+  min-height: 44px;
+  border: 0;
+  padding: 0 5px;
+  background: transparent;
+  color: #777;
+  font: 500 9px 'Space Grotesk', sans-serif;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.language-switcher button:hover,
+.language-switcher button[aria-pressed="true"] { color: var(--red); }
+.language-switcher button:focus-visible { outline: 1px solid var(--red); outline-offset: 2px; }
+
 /* ── GALLERY ── */
 .gallery-wrap { padding: 20px 3% 0 3%; position: relative; }
 
@@ -529,10 +553,13 @@ nav.scrolled {
 
 @media (max-width: 600px) {
   nav { padding: 12px 5% 10px; }
+  nav { align-items: center; }
   .nav-logo { font-size: clamp(28px, 9vw, 44px); filter: blur(2px); }
   .nav-sub { font-size: 13px; }
-  .nav-links { gap: 14px; }
+  .nav-links { gap: 10px; align-self: center; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
   .nav-links a { font-size: 9px; letter-spacing: 0.18em; }
+  .language-switcher { gap: 0; margin-left: 0; padding-left: 5px; }
+  .language-switcher button { min-width: 44px; min-height: 44px; padding: 0 3px; font-size: 8px; }
 
   .gallery-intro { padding: 14px 3% 10px; }
   .gallery-intro-quote { font-size: 13px; max-width: 100%; text-align: right; }

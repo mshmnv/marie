@@ -1,15 +1,33 @@
 {
-  "bio": [
-    "привет, я мари.",
-    "давай снимем кадры, в которых ты настоящая.",
-    "живые, честные, твои.",
-    "",
-    "живу в москве,",
-    "но часто меня можно поймать в других странах."
-  ],
+  "bio": {
+    "ru": [
+      "привет, я мари.",
+      "давай снимем кадры, в которых ты настоящая.",
+      "живые, честные, твои.",
+      "",
+      "живу в москве,",
+      "но часто меня можно поймать в других странах."
+    ],
+    "en": [
+      "hi, i’m marie.",
+      "let’s make photos that feel like you.",
+      "alive, honest, yours.",
+      "",
+      "based in moscow,",
+      "often somewhere else."
+    ],
+    "es": [
+      "hola, soy marie.",
+      "hagamos fotos en las que seas tú misma.",
+      "vivas, sinceras, tuyas.",
+      "",
+      "vivo en Moscú,",
+      "aunque a menudo me encontrarás en otros lugares."
+    ]
+  },
   "links": [
-    { "label": "Instagram",              "url": "https://www.instagram.com/miinaeva/",    "external": true },
-    { "label": "YouTube",                "url": "https://www.youtube.com/@marieminaeva",  "external": true },
-    { "label": "minaevamarie@gmail.com", "url": "mailto:minaevamarie@gmail.com",          "external": false }
+    { "label": "Instagram", "url": "https://www.instagram.com/miinaeva/", "external": true },
+    { "label": "YouTube", "url": "https://www.youtube.com/@marieminaeva", "external": true },
+    { "label": "minaevamarie@gmail.com", "url": "mailto:minaevamarie@gmail.com", "external": false }
   ]
 }

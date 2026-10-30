@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="pricing.css">
 </head>
-<body>
+<body data-page="pricing">
 
   <div id="cursor">
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -26,45 +26,45 @@
       <a href="index.html" class="nav-logo">MARIE</a>
     </div>
     <div class="nav-links">
-      <a href="index.html">WORK</a>
-      <a href="pricing.html" class="active">PRICES</a>
-      <a href="about.html">ABOUT</a>
+      <a href="index.html" data-i18n="nav.work">WORK</a>
+      <a href="pricing.html" class="active" data-i18n="nav.prices">PRICES</a>
+      <a href="about.html" data-i18n="nav.about">ABOUT</a>
     </div>
   </nav>
 
   <div class="pricing-wrap">
     <div class="pricing-hero">
-      <div class="pricing-title">СЪЁМКА</div>
-      <p class="pricing-lead">Снимаю людей такими, какие они есть —<br>без постановки, без напряжения.<br>Только живые кадры.</p>
-      <p class="pricing-lead-tags">женский портрет · модельные тесты · контент для брендов</p>
+      <div class="pricing-title" data-i18n="pricing.title">СЪЁМКА</div>
+      <p class="pricing-lead" data-i18n="pricing.lead">Снимаю людей такими, какие они есть — без постановки, без напряжения. Только живые кадры.</p>
+      <p class="pricing-lead-tags" data-i18n="pricing.tags">женский портрет · модельные тесты · контент для брендов</p>
     </div>
 
     <!-- ── ФОТО ───────────────────────────────────────────────── -->
     <section class="pricing-section">
       <h2 class="pricing-section-title">
-        <span class="pricing-section-title-text">ФОТО</span>
-        <span class="pricing-section-eng">photo</span>
+        <span class="pricing-section-title-text" data-i18n="pricing.photo">ФОТО</span>
+        <span class="pricing-section-eng" data-i18n="pricing.photoEng">photo</span>
       </h2>
       <div class="pricing-grid pricing-grid-1" data-grid="photo"></div>
     </section>
 
     <!-- ── FAQ ────────────────────────────────────────────────── -->
     <section class="pricing-faq">
-      <h2 class="pricing-faq-title">ВОПРОСЫ</h2>
+      <h2 class="pricing-faq-title" data-i18n="pricing.faqTitle">ВОПРОСЫ</h2>
       <div data-faq></div>
     </section>
 
     <div class="pricing-how">
-      <div class="pricing-how-title">КАК ЭТО РАБОТАЕТ</div>
+      <div class="pricing-how-title" data-i18n="pricing.howTitle">КАК ЭТО РАБОТАЕТ</div>
       <ol class="pricing-steps">
-        <li>Пишешь мне</li>
-        <li>Обсуждаем идею и локацию</li>
-        <li>Снимаем</li>
-        <li>Получаешь готовые файлы</li>
+        <li data-i18n="pricing.step1">Пишешь мне</li>
+        <li data-i18n="pricing.step2">Обсуждаем идею и локацию</li>
+        <li data-i18n="pricing.step3">Снимаем</li>
+        <li data-i18n="pricing.step4">Получаешь готовые файлы</li>
       </ol>
     </div>
     <div class="pricing-cta">
-      <a href="https://t.me/miinaeva" class="pricing-btn" target="_blank" rel="noopener">написать мне</a>
+      <a href="https://t.me/miinaeva" class="pricing-btn" target="_blank" rel="noopener" data-i18n="pricing.cta">написать мне</a>
     </div>
   </div>
 
@@ -76,6 +76,7 @@
     </div>
   </footer>
 
+  <script src="site-i18n.js"></script>
   <script>
     const nav = document.getElementById('main-nav');
     window.addEventListener('scroll', () => {
@@ -100,6 +101,7 @@
         el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
       });
     }
+    window.bindPricingCursorHover = bindCursorHover;
     bindCursorHover();
     window.addEventListener('load', bindCursorHover);
   </script>
