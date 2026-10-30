@@ -1,29 +1,134 @@
 [
-  {"src":  "./11_2026_stylish/DSC01564.jpg"},
-  {"src":  "./11_2026_stylish/DSC01722.jpg"},
-  {"src":  "./11_2026_stylish/DSC01724.jpg"},
-  {"src":  "./11_2026_stylish/DSC01745.jpg"},
-  {"src":  "./11_2026_stylish/SCRL0007.jpg"},
-  {"src":  "./11_2026_stylish/DSC01757.jpg"},
-  {"src":  "./11_2026_stylish/DSC01898.jpg"},
-  {"src":  "./11_2026_stylish/DSC01699.jpg"},
-
-  { "src": "./8_2026_mk_rose/DSC00915.jpg" },
-  { "src": "./8_2026_mk_rose/DSC00550.jpg" },
-  { "src": "./8_2026_mk_rose/DSC00674.jpg" },
-  { "src": "./8_2026_mk_rose/DSC00701.jpg" },
-  { "src": "./8_2026_mk_rose/DSC00880.jpg" },
-
-  { "src": "./8_2026_ballet/DSC09769.jpg" },
-  { "src": "./8_2026_ballet/DSC09200.jpg" },
-  { "src": "./8_2026_ballet/DSC09457.jpg" },
-  { "src": "./8_2026_ballet/DSC09785.jpg" },
-  { "src": "./8_2026_ballet/DSC09789.jpg" },
-  { "src": "./8_2026_ballet/DSC09960.jpg" },
-
-
-  { "src": "./7_2026_bali/DSC08094.jpg" },
-  { "src": "./7_2026_bali/DSC08133.jpg" },
-  { "src": "./7_2026_bali/DSC08134.jpg" }
-
+  {
+    "src": "./11_2026_stylish/optimized/DSC01564.webp",
+    "shoot": "stylish",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./11_2026_stylish/optimized/DSC01722.webp",
+    "shoot": "stylish",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./11_2026_stylish/optimized/DSC01724.webp",
+    "shoot": "stylish",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./11_2026_stylish/optimized/DSC01745.webp",
+    "shoot": "stylish",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./11_2026_stylish/optimized/SCRL0007.webp",
+    "shoot": "stylish",
+    "width": 1440,
+    "height": 1800
+  },
+  {
+    "src": "./11_2026_stylish/optimized/DSC01757.webp",
+    "shoot": "stylish",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./11_2026_stylish/optimized/DSC01898.webp",
+    "shoot": "stylish",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./11_2026_stylish/optimized/DSC01699.webp",
+    "shoot": "stylish",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./8_2026_mk_rose/optimized/DSC00915.webp",
+    "shoot": "mk-roses",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./8_2026_mk_rose/optimized/DSC00550.webp",
+    "shoot": "mk-roses",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./8_2026_mk_rose/optimized/DSC00674.webp",
+    "shoot": "mk-roses",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./8_2026_mk_rose/optimized/DSC00701.webp",
+    "shoot": "mk-roses",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./8_2026_mk_rose/optimized/DSC00880.webp",
+    "shoot": "mk-roses",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./8_2026_ballet/optimized/DSC09769.webp",
+    "shoot": "ballet",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./8_2026_ballet/optimized/DSC09200.webp",
+    "shoot": "ballet",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./8_2026_ballet/optimized/DSC09457.webp",
+    "shoot": "ballet",
+    "width": 1080,
+    "height": 1440
+  },
+  {
+    "src": "./8_2026_ballet/optimized/DSC09785.webp",
+    "shoot": "ballet",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./8_2026_ballet/optimized/DSC09789.webp",
+    "shoot": "ballet",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./8_2026_ballet/optimized/DSC09960.webp",
+    "shoot": "ballet",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./7_2026_bali/optimized/DSC08094.webp",
+    "shoot": "bali",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./7_2026_bali/optimized/DSC08133.webp",
+    "shoot": "bali",
+    "width": 1080,
+    "height": 1350
+  },
+  {
+    "src": "./7_2026_bali/optimized/DSC08134.webp",
+    "shoot": "bali",
+    "width": 1080,
+    "height": 1351
+  }
 ]

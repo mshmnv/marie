@@ -58,6 +58,7 @@
 
   const supported = Object.keys(translations);
   const storageKey = 'marie-site-language';
+  const locationCacheKey = 'marie-site-location-language';
   const page = document.body.dataset.page || '';
   const listeners = new Set();
 
@@ -66,7 +67,39 @@
       const saved = localStorage.getItem(storageKey);
       if (supported.includes(saved)) return saved;
     } catch (_) { /* Storage may be disabled. */ }
-    return 'ru';
+    return null;
+  }
+
+  function languageForCountry(code) {
+    if (code === 'RU') return 'ru';
+    if (code === 'ES') return 'es';
+    return 'en';
+  }
+
+  function detectLanguageByCountry() {
+    if (readSavedLanguage()) return;
+    try {
+      const cached = JSON.parse(sessionStorage.getItem(locationCacheKey) || 'null');
+      if (cached && supported.includes(cached.language) && Date.now() - cached.at < 24 * 60 * 60 * 1000) {
+        language = cached.language;
+        applyStaticTranslations();
+        listeners.forEach(listener => listener(language));
+        return;
+      }
+    } catch (_) { /* Location cache is optional. */ }
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 1800);
+    fetch('https://ipwho.is/', { signal: controller.signal, cache: 'force-cache' })
+      .then(response => response.ok ? response.json() : null)
+      .then(data => {
+        if (readSavedLanguage() || !data?.success || !supported.includes(languageForCountry(data.country_code))) return;
+        language = languageForCountry(data.country_code);
+        try { sessionStorage.setItem(locationCacheKey, JSON.stringify({ language, at: Date.now() })); } catch (_) { /* Keep the selection for this page. */ }
+        applyStaticTranslations();
+        listeners.forEach(listener => listener(language));
+      })
+      .catch(() => {})
+      .finally(() => clearTimeout(timeout));
   }
 
   let language = readSavedLanguage();
@@ -119,6 +152,7 @@
     return () => listeners.delete(listener);
   }
 
+  detectLanguageByCountry();
   mountSwitcher();
   applyStaticTranslations();
 

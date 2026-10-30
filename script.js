@@ -43,36 +43,33 @@ let photos = [];
 
 // ── Build gallery ─────────────────────────────────────────────
 const grid = document.getElementById('gallery');
+const shootOrder = ['stylish', 'mk-roses', 'ballet', 'bali'];
+let initialImagesToLoad = 2;
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      const video = e.target.querySelector('video[data-src]');
-      if (video) {
-        video.src = video.dataset.src;
-        video.removeAttribute('data-src');
-        video.play().catch(() => {});
-      }
-      const img = e.target.querySelector('img[data-src]');
-      if (img) {
-        img.src = img.dataset.src;
-        img.removeAttribute('data-src');
-      }
-      observer.unobserve(e.target);
+    if (!e.isIntersecting) return;
+    const video = e.target.querySelector('video[data-src]');
+    if (video) {
+      video.addEventListener('loadeddata', () => e.target.classList.add('visible'), { once: true });
+      video.src = video.dataset.src;
+      video.removeAttribute('data-src');
+      video.play().catch(() => {});
     }
+    const img = e.target.querySelector('img[data-src]');
+    if (img) {
+      img.src = img.dataset.src;
+      img.removeAttribute('data-src');
+    }
+    observer.unobserve(e.target);
   });
   // rootMargin — начинаем грузить чуть раньше, чем карточка войдёт в экран
-}, { threshold: 0, rootMargin: '600px 0px' });
+}, { threshold: 0, rootMargin: '900px 0px' });
 
 function buildGallery(photos) {
-// Строка для main-фото (видео + первое фото в ряд)
-const mainRow = document.createElement('div');
-mainRow.className = 'gallery-main-row';
-// добавляем верхний ряд только если есть main-карточки — иначе он оставляет пустой отступ
-if (photos.some(p => p.main)) grid.appendChild(mainRow);
+grid.replaceChildren();
 
-photos.forEach((photo, i) => {
+const cardFor = (photo, i, isEager) => {
   // Photo/video card
   const card = document.createElement('div');
   card.className = 'photo-card';
@@ -91,11 +88,21 @@ photos.forEach((photo, i) => {
   } else {
     const img = document.createElement('img');
     img.decoding = 'async';
+    img.fetchPriority = isEager ? 'high' : 'auto';
+    img.width = photo.width || 1080;
+    img.height = photo.height || 1350;
     img.alt = '';
-    img.addEventListener('load', () => { img.dataset.loaded = '1'; });
+    img.addEventListener('load', () => {
+      img.dataset.loaded = '1';
+      card.classList.add('visible');
+    }, { once: true });
     img.addEventListener('error', () => card.style.display = 'none');
-    // src проставляет IntersectionObserver, когда карточка подходит к экрану
-    img.dataset.src = 'photos/' + photo.src;
+    if (isEager) {
+      img.src = 'photos/' + photo.src;
+    } else {
+      img.loading = 'lazy';
+      img.dataset.src = 'photos/' + photo.src;
+    }
     inner.appendChild(img);
   }
 
@@ -121,21 +128,50 @@ photos.forEach((photo, i) => {
   card.addEventListener('mouseleave', applyTransform);
   card.addEventListener('click', () => openLightbox(i));
 
-  observer.observe(card);
-  if (photo.main) {
-    mainRow.appendChild(card);
-  } else {
-    grid.appendChild(card);
+  if (!isEager) observer.observe(card);
+  return card;
+};
+
+const renderSection = (title, items) => {
+  if (!items.length) return;
+  const section = document.createElement('section');
+  section.className = 'gallery-shoot';
+  if (title) {
+    const heading = document.createElement('h2');
+    heading.className = 'gallery-shoot-title';
+    heading.textContent = title;
+    section.appendChild(heading);
   }
+  const sectionGrid = document.createElement('div');
+  sectionGrid.className = 'gallery-grid gallery-shoot-grid';
+  items.forEach(photo => {
+    const eager = photo.type !== 'video' && initialImagesToLoad > 0;
+    if (eager) initialImagesToLoad -= 1;
+    sectionGrid.appendChild(cardFor(photo, photos.indexOf(photo), eager));
+  });
+  section.appendChild(sectionGrid);
+  grid.appendChild(section);
+};
+
+const grouped = new Map();
+photos.forEach(photo => {
+  const key = photo.shoot || 'other';
+  if (!grouped.has(key)) grouped.set(key, []);
+  grouped.get(key).push(photo);
 });
+shootOrder.forEach(key => renderSection('', grouped.get(key) || []));
+for (const [key, items] of grouped) {
+  if (!shootOrder.includes(key)) renderSection(key === 'other' ? '' : key, items);
+}
 } // end buildGallery
 
 fetch('data/photos.json')
   .then(r => r.json())
   .then(list => {
-    photos = [...list.filter(p => p.main), ...list.filter(p => !p.main)];
+    photos = list;
     buildGallery(photos);
-  });
+  })
+  .catch(error => console.error('Gallery photos could not be loaded.', error));
 
 // ── Lightbox ──────────────────────────────────────────────────
 const lb       = document.getElementById('lightbox');

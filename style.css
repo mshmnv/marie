@@ -158,6 +158,14 @@ nav.scrolled {
   column-gap: 28px;
 }
 
+.gallery-shoot { margin-bottom: 52px; }
+.gallery-shoot-grid { min-height: 1px; }
+.gallery-shoot-title {
+  margin: 0 0 20px;
+  font: 400 clamp(28px, 5vw, 64px)/0.95 'Bebas Neue', sans-serif;
+  letter-spacing: 0.035em;
+}
+
 /* Main photos row */
 .gallery-main-row {
   column-span: all;
@@ -222,6 +230,7 @@ nav.scrolled {
    Без этого карточки схлопываются в нулевую высоту, все попадают
    в первый экран, и браузер грузит всю галерею сразу вместо lazy. */
 .photo-inner img:not([data-loaded]) { aspect-ratio: 4 / 5; }
+.photo-card.big .photo-inner img:not([data-loaded]) { aspect-ratio: 4 / 5; }
 
 .photo-inner img {
   width: 100%;
@@ -569,6 +578,8 @@ nav.scrolled {
 
   .gallery-wrap { padding: 10px 2% 0; }
   .gallery-grid { columns: 2; column-gap: 6px; }
+  .gallery-shoot { margin-bottom: 32px; }
+  .gallery-shoot-title { margin: 0 0 12px; }
   .photo-card { margin-bottom: 6px; }
   .gallery-main-row { flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
   .gallery-main-row .photo-card { flex: 1 1 calc(50% - 3px); max-width: 100%; }
