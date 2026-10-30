@@ -60,9 +60,6 @@ fetch('data/pricing.json').then(r => r.json()).then(data => {
   function render() {
     photoGrid.innerHTML = '';
     faqSlot.innerHTML = '';
-    document.querySelectorAll('[data-i18n="pricing.photoEng"]').forEach(el => {
-      el.textContent = window.SiteI18n?.getPack()?.pricing?.photoEng || 'photo';
-    });
     (data.photo?.cards || []).forEach(c => photoGrid.insertAdjacentHTML('beforeend', photoCardHTML(c)));
     (data.faq || []).forEach(item => {
       const text = translated(item);

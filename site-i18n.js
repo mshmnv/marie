@@ -14,7 +14,7 @@
         title: 'СЪЁМКА',
         lead: 'Снимаю людей такими, какие они есть —\nбез постановки и напряжения.\nТолько живые кадры.',
         tags: 'женский портрет · модельные тесты · контент для брендов',
-        photo: 'ФОТО', photoEng: 'фото', faqTitle: 'ВОПРОСЫ', howTitle: 'КАК ЭТО РАБОТАЕТ',
+        photo: 'ФОТО', faqTitle: 'ВОПРОСЫ', howTitle: 'КАК ЭТО РАБОТАЕТ',
         step1: 'Пишешь мне', step2: 'Обсуждаем идею и локацию', step3: 'Снимаем', step4: 'Получаешь готовые файлы',
         cta: 'написать мне'
       }
@@ -33,7 +33,7 @@
         title: 'PHOTOSHOOTS',
         lead: 'I photograph people as they are —\nunposed and at ease.\nJust real, alive moments.',
         tags: 'women’s portraits · model tests · brand content',
-        photo: 'PHOTOGRAPHY', photoEng: 'photo', faqTitle: 'QUESTIONS', howTitle: 'HOW IT WORKS',
+        photo: 'PHOTOGRAPHY', faqTitle: 'QUESTIONS', howTitle: 'HOW IT WORKS',
         step1: 'Get in touch', step2: 'We plan the idea and location', step3: 'We shoot', step4: 'Your finished photos are delivered',
         cta: 'get in touch'
       }
@@ -52,7 +52,7 @@
         title: 'SESIÓN FOTOGRÁFICA',
         lead: 'Fotografío a las personas tal como son —\nsin poses forzadas ni tensión.\nSolo momentos reales y vivos.',
         tags: 'retrato femenino · tests de modelo · contenido para marcas',
-        photo: 'FOTOGRAFÍA', photoEng: 'foto', faqTitle: 'PREGUNTAS', howTitle: 'CÓMO FUNCIONA',
+        photo: 'FOTOGRAFÍA', faqTitle: 'PREGUNTAS', howTitle: 'CÓMO FUNCIONA',
         step1: 'Me escribes', step2: 'Hablamos de la idea y la ubicación', step3: 'Hacemos la sesión', step4: 'Recibes las fotos terminadas',
         cta: 'escríbeme'
       }
