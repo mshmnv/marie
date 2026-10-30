@@ -43,8 +43,10 @@ let photos = [];
 
 // ── Build gallery ─────────────────────────────────────────────
 const grid = document.getElementById('gallery');
+const galleryWrap = grid.parentElement;
 const shootOrder = ['stylish', 'mk-roses', 'ballet', 'bali'];
 let initialImagesToLoad = 2;
+let groupedPhotos = new Map();
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -67,7 +69,8 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0, rootMargin: '900px 0px' });
 
 function buildGallery(photos) {
-grid.replaceChildren();
+  galleryWrap.querySelectorAll('.gallery-shoot').forEach(section => section.remove());
+  grid.replaceChildren();
 
 const cardFor = (photo, i, isEager) => {
   // Photo/video card
@@ -150,17 +153,17 @@ const renderSection = (title, items) => {
     sectionGrid.appendChild(cardFor(photo, photos.indexOf(photo), eager));
   });
   section.appendChild(sectionGrid);
-  grid.appendChild(section);
+  galleryWrap.appendChild(section);
 };
 
-const grouped = new Map();
+groupedPhotos = new Map();
 photos.forEach(photo => {
   const key = photo.shoot || 'other';
-  if (!grouped.has(key)) grouped.set(key, []);
-  grouped.get(key).push(photo);
+  if (!groupedPhotos.has(key)) groupedPhotos.set(key, []);
+  groupedPhotos.get(key).push(photo);
 });
-shootOrder.forEach(key => renderSection('', grouped.get(key) || []));
-for (const [key, items] of grouped) {
+shootOrder.forEach(key => renderSection('', groupedPhotos.get(key) || []));
+for (const [key, items] of groupedPhotos) {
   if (!shootOrder.includes(key)) renderSection(key === 'other' ? '' : key, items);
 }
 } // end buildGallery
@@ -211,12 +214,18 @@ function closeLightbox() {
 }
 
 function showPrev() {
-  currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+  const shoot = photos[currentIndex].shoot || 'other';
+  const items = photos.map((photo, index) => ({ photo, index })).filter(entry => (entry.photo.shoot || 'other') === shoot);
+  const local = items.findIndex(entry => entry.index === currentIndex);
+  currentIndex = items[(local - 1 + items.length) % items.length].index;
   updateLightbox(currentIndex);
 }
 
 function showNext() {
-  currentIndex = (currentIndex + 1) % photos.length;
+  const shoot = photos[currentIndex].shoot || 'other';
+  const items = photos.map((photo, index) => ({ photo, index })).filter(entry => (entry.photo.shoot || 'other') === shoot);
+  const local = items.findIndex(entry => entry.index === currentIndex);
+  currentIndex = items[(local + 1) % items.length].index;
   updateLightbox(currentIndex);
 }
 

@@ -160,12 +160,6 @@ nav.scrolled {
   column-gap: 28px;
 }
 
-/* The outer wrapper holds shoot sections, only each shoot grid gets columns. */
-#gallery.gallery-grid {
-  columns: initial;
-  column-width: auto;
-}
-
 .gallery-shoot { margin-bottom: 52px; }
 .gallery-shoot-grid { min-height: 1px; }
 .gallery-shoot-title {

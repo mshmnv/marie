@@ -102,7 +102,7 @@
       .finally(() => clearTimeout(timeout));
   }
 
-  let language = readSavedLanguage();
+  let language = readSavedLanguage() || 'ru';
 
   function applyStaticTranslations() {
     const pack = translations[language];
@@ -119,9 +119,10 @@
   }
 
   function setLanguage(nextLanguage) {
-    if (!supported.includes(nextLanguage) || nextLanguage === language) return;
+    if (!supported.includes(nextLanguage)) return;
+    try { localStorage.setItem(storageKey, nextLanguage); } catch (_) { /* Keep the selection for this page. */ }
+    if (nextLanguage === language) return;
     language = nextLanguage;
-    try { localStorage.setItem(storageKey, language); } catch (_) { /* Keep the selection for this page. */ }
     applyStaticTranslations();
     listeners.forEach(listener => listener(language));
   }
