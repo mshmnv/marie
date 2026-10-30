@@ -11,7 +11,6 @@
         contact: 'написать мне →'
       },
       pricing: {
-        title: 'СЪЁМКА',
         lead: 'Снимаю людей такими, какие они есть —\nбез постановки и напряжения.\nТолько живые кадры.',
         tags: 'женский портрет · модельные тесты · контент для брендов',
         photo: 'ФОТО', faqTitle: 'ВОПРОСЫ', howTitle: 'КАК ЭТО РАБОТАЕТ',
@@ -30,7 +29,6 @@
         contact: 'get in touch →'
       },
       pricing: {
-        title: 'PHOTOSHOOTS',
         lead: 'I photograph people as they are —\nunposed and at ease.\nJust real, alive moments.',
         tags: 'women’s portraits · model tests · brand content',
         photo: 'PHOTOGRAPHY', faqTitle: 'QUESTIONS', howTitle: 'HOW IT WORKS',
@@ -49,7 +47,6 @@
         contact: 'escríbeme →'
       },
       pricing: {
-        title: 'SESIÓN FOTOGRÁFICA',
         lead: 'Fotografío a las personas tal como son —\nsin poses forzadas ni tensión.\nSolo momentos reales y vivos.',
         tags: 'retrato femenino · tests de modelo · contenido para marcas',
         photo: 'FOTOGRAFÍA', faqTitle: 'PREGUNTAS', howTitle: 'CÓMO FUNCIONA',
