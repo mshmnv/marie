@@ -7,7 +7,7 @@
   <link rel="icon" href="icons/favicon.png" type="image/png">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-page="about">
 
   <div id="cursor">
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -25,9 +25,14 @@
       <a href="index.html" class="nav-logo">MARIE</a>
     </div>
     <div class="nav-links">
-      <a href="index.html">WORK</a>
-      <a href="pricing.html">PRICES</a>
-      <a href="about.html" class="active">ABOUT</a>
+      <a href="index.html" data-i18n="nav.work">WORK</a>
+      <a href="pricing.html" data-i18n="nav.prices">PRICES</a>
+      <a href="about.html" class="active" data-i18n="nav.about">ABOUT</a>
+      <div class="language-switcher" role="group" aria-label="Choose language">
+        <button type="button" data-lang="ru" aria-label="Русский">RU</button>
+        <button type="button" data-lang="en" aria-label="English">EN</button>
+        <button type="button" data-lang="es" aria-label="Español">ES</button>
+      </div>
     </div>
   </nav>
 
@@ -51,10 +56,22 @@
     </div>
   </footer>
 
+  <script src="site-i18n.js"></script>
   <script>
     fetch('data/about.json').then(r => r.json()).then(data => {
       const bio = document.getElementById('about-bio');
-      bio.innerHTML = data.bio.map(line => line === '' ? '<br>' : line).join('<br>');
+      function renderBio() {
+        const lang = window.SiteI18n ? SiteI18n.getLanguage() : 'ru';
+        const lines = data.bio[lang] || data.bio.ru;
+        bio.replaceChildren();
+        lines.forEach((line, index) => {
+          if (index) bio.appendChild(document.createElement('br'));
+          if (line) bio.appendChild(document.createTextNode(line));
+          else bio.appendChild(document.createElement('br'));
+        });
+      }
+      if (window.SiteI18n) SiteI18n.onChange(renderBio);
+      else renderBio();
       const links = document.getElementById('about-links');
       data.links.forEach(l => {
         const a = document.createElement('a');
