@@ -43,10 +43,8 @@ let photos = [];
 
 // ── Build gallery ─────────────────────────────────────────────
 const grid = document.getElementById('gallery');
-const galleryWrap = grid.parentElement;
 const shootOrder = ['stylish', 'mk-roses', 'ballet', 'bali'];
 let initialImagesToLoad = 2;
-let groupedPhotos = new Map();
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -69,7 +67,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0, rootMargin: '900px 0px' });
 
 function buildGallery(photos) {
-  galleryWrap.querySelectorAll('.gallery-shoot').forEach(section => section.remove());
+  grid.className = 'gallery-grid';
   grid.replaceChildren();
 
 const cardFor = (photo, i, isEager) => {
@@ -135,37 +133,15 @@ const cardFor = (photo, i, isEager) => {
   return card;
 };
 
-const renderSection = (title, items) => {
-  if (!items.length) return;
-  const section = document.createElement('section');
-  section.className = 'gallery-shoot';
-  if (title) {
-    const heading = document.createElement('h2');
-    heading.className = 'gallery-shoot-title';
-    heading.textContent = title;
-    section.appendChild(heading);
-  }
-  const sectionGrid = document.createElement('div');
-  sectionGrid.className = 'gallery-grid gallery-shoot-grid';
-  items.forEach(photo => {
+  const rank = new Map(shootOrder.map((key, index) => [key, index]));
+  const orderedPhotos = [...photos].sort((a, b) =>
+    (rank.get(a.shoot) ?? shootOrder.length) - (rank.get(b.shoot) ?? shootOrder.length)
+  );
+  orderedPhotos.forEach(photo => {
     const eager = photo.type !== 'video' && initialImagesToLoad > 0;
     if (eager) initialImagesToLoad -= 1;
-    sectionGrid.appendChild(cardFor(photo, photos.indexOf(photo), eager));
+    grid.appendChild(cardFor(photo, photos.indexOf(photo), eager));
   });
-  section.appendChild(sectionGrid);
-  galleryWrap.appendChild(section);
-};
-
-groupedPhotos = new Map();
-photos.forEach(photo => {
-  const key = photo.shoot || 'other';
-  if (!groupedPhotos.has(key)) groupedPhotos.set(key, []);
-  groupedPhotos.get(key).push(photo);
-});
-shootOrder.forEach(key => renderSection('', groupedPhotos.get(key) || []));
-for (const [key, items] of groupedPhotos) {
-  if (!shootOrder.includes(key)) renderSection(key === 'other' ? '' : key, items);
-}
 } // end buildGallery
 
 fetch('data/photos.json')
