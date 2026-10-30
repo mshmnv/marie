@@ -114,8 +114,7 @@
     document.querySelectorAll('.language-switcher button').forEach(button => {
       button.setAttribute('aria-pressed', String(button.dataset.lang === language));
     });
-    const switcher = document.querySelector('.language-switcher');
-    if (switcher) switcher.setAttribute('aria-label', pack.languageLabel);
+    document.querySelectorAll('.language-switcher').forEach(switcher => switcher.setAttribute('aria-label', pack.languageLabel));
     if (pack.pageTitles[page]) document.title = pack.pageTitles[page];
   }
 
@@ -128,22 +127,12 @@
   }
 
   function mountSwitcher() {
-    const navLinks = document.querySelector('.nav-links');
-    if (!navLinks || navLinks.querySelector('.language-switcher')) return;
-    const switcher = document.createElement('div');
-    switcher.className = 'language-switcher';
+    const switcher = document.querySelector('.language-switcher');
+    if (!switcher) return;
     switcher.setAttribute('role', 'group');
-    switcher.setAttribute('aria-label', translations[language].languageLabel);
-    for (const code of supported) {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.dataset.lang = code;
-      button.textContent = code.toUpperCase();
-      button.setAttribute('aria-label', code.toUpperCase());
-      button.addEventListener('click', () => setLanguage(code));
-      switcher.appendChild(button);
+    for (const button of switcher.querySelectorAll('button[data-lang]')) {
+      button.addEventListener('click', () => setLanguage(button.dataset.lang));
     }
-    navLinks.appendChild(switcher);
   }
 
   function onChange(listener) {
