@@ -564,6 +564,7 @@ nav.scrolled {
   .about-photo::after { border-right: none; border-bottom: 3px solid var(--red); }
   .about-content { padding: 40px 8% 60px; justify-content: flex-start; }
   .about-bio { font-size: clamp(18px, 3.5vw, 24px); max-width: 100%; }
+  .gallery-grid { columns: 2; column-width: auto; column-gap: 12px; }
 }
 
 @media (max-width: 600px) {
@@ -577,7 +578,7 @@ nav.scrolled {
   .gallery-intro-quote { font-size: 13px; max-width: 100%; text-align: right; }
 
   .gallery-wrap { padding: 10px 2% 0; }
-  .gallery-grid { columns: 2; column-gap: 6px; }
+  .gallery-grid { columns: 2; column-width: auto; column-gap: 8px; }
   .gallery-shoot { margin-bottom: 32px; }
   .gallery-shoot-title { margin: 0 0 12px; }
   .photo-card { margin-bottom: 6px; }
