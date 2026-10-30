@@ -96,9 +96,11 @@ nav.scrolled {
 
 .nav-links {
   display: flex;
+  flex-wrap: nowrap;
   gap: 28px;
   align-self: flex-end;
   padding-bottom: 4px;
+  white-space: nowrap;
 }
 
 .nav-links a {
@@ -153,15 +155,27 @@ nav.scrolled {
 .language-switcher button:focus-visible { outline: 1px solid var(--red); outline-offset: 2px; }
 
 /* ── GALLERY ── */
-.gallery-wrap { padding: 20px 3% 0 3%; position: relative; }
+.gallery-wrap { display: block; width: 100%; max-width: 100%; padding: 20px 3% 0; position: relative; }
 
 .gallery-grid {
-  column-width: 260px;
-  column-gap: 28px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+  width: 100%;
 }
 
-.gallery-shoot { margin-bottom: 52px; }
-.gallery-shoot-grid { min-height: 1px; }
+.gallery-shoot { width: 100%; margin-bottom: 52px; }
+.gallery-shoot-grid {
+  display: grid;
+  width: 100%;
+  max-width: none;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-flow: row;
+  align-items: start;
+  column-count: initial;
+  column-width: auto;
+}
+.gallery-shoot-grid > .photo-card { min-width: 0; }
 .gallery-shoot-title {
   margin: 0 0 20px;
   font: 400 clamp(28px, 5vw, 64px)/0.95 'Bebas Neue', sans-serif;
@@ -187,9 +201,9 @@ nav.scrolled {
 /* Photo card */
 .photo-card {
   break-inside: avoid;
-  display: inline-block;
+  display: block;
   width: 100%;
-  margin-bottom: 28px;
+  margin-bottom: 0;
   position: relative;
   overflow: hidden;
   cursor: none;
@@ -548,12 +562,23 @@ nav.scrolled {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media (max-width: 900px) {
   .cta-section { flex-direction: column; align-items: flex-start; }
-  nav { align-items: stretch; flex-wrap: wrap; }
-  .nav-left { flex: 0 0 100%; }
-  .nav-links { flex: 0 0 100%; width: 100%; gap: 8px; align-self: stretch; align-items: center; flex-wrap: nowrap; justify-content: space-between; padding: 8px 0 0; }
-  .nav-links a { font-size: 9px; letter-spacing: 0.08em; white-space: nowrap; }
+  nav { align-items: flex-end; flex-wrap: nowrap; gap: 10px; }
+  .nav-left { flex: 0 1 auto; min-width: 0; }
+  .nav-logo { font-size: clamp(32px, 5vw, 48px); }
+  .nav-sub { font-size: 20px; }
+  .nav-links { flex: 0 0 auto; width: auto; gap: clamp(7px, 1vw, 12px); align-self: flex-end; align-items: center; justify-content: flex-end; padding: 0 0 2px; }
+  .nav-links a { font-size: 9px; letter-spacing: 0.04em; white-space: nowrap; }
   .language-switcher { display: inline-flex; visibility: visible; opacity: 1; flex: 0 0 auto; gap: 0; margin-left: 0; padding-left: 5px; }
-  .language-switcher button { min-width: 44px; min-height: 44px; padding: 0 2px; font-size: 8px; }
+  .language-switcher button { min-width: 32px; min-height: 44px; padding: 0 2px; font-size: 8px; }
+  .gallery-grid, .gallery-shoot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+}
+
+@media (min-width: 901px) {
+  nav { flex-wrap: nowrap; }
+  .nav-left { flex: 0 0 auto; }
+  .nav-links { flex: 0 0 auto; width: auto; justify-content: flex-end; gap: clamp(14px, 2vw, 28px); }
+  .language-switcher { margin-left: 4px; }
+  .gallery-grid, .gallery-shoot-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 @media (max-width: 860px) {
@@ -566,26 +591,24 @@ nav.scrolled {
   .about-photo::after { border-right: none; border-bottom: 3px solid var(--red); }
   .about-content { padding: 40px 8% 60px; justify-content: flex-start; }
   .about-bio { font-size: clamp(18px, 3.5vw, 24px); max-width: 100%; }
-  .gallery-grid { columns: 2; column-width: auto; column-gap: 12px; }
 }
 
 @media (max-width: 600px) {
-  nav { padding: 12px 5% 10px; }
+  nav { padding: 12px 5% 10px; align-items: stretch; flex-wrap: wrap; gap: 0; }
+  .nav-left { flex: 0 0 100%; }
   .nav-logo { font-size: clamp(28px, 9vw, 44px); filter: blur(2px); }
   .nav-sub { font-size: 13px; }
-  .nav-links { gap: 4px; }
+  .nav-links { flex: 0 0 100%; width: 100%; gap: 4px; align-self: stretch; justify-content: space-between; padding: 8px 0 0; }
   .nav-links a { font-size: 8px; letter-spacing: 0.04em; }
 
   .gallery-intro { padding: 14px 3% 10px; }
   .gallery-intro-quote { font-size: 13px; max-width: 100%; text-align: right; }
 
   .gallery-wrap { padding: 10px 2% 0; }
-  .gallery-grid { columns: 2; column-width: auto; column-gap: 8px; }
+  .gallery-grid, .gallery-shoot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .gallery-shoot { margin-bottom: 32px; }
   .gallery-shoot-title { margin: 0 0 12px; }
-  .photo-card { margin-bottom: 6px; }
-  .gallery-main-row { flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
-  .gallery-main-row .photo-card { flex: 1 1 calc(50% - 3px); max-width: 100%; }
+  .photo-card { margin-bottom: 0; }
 
   .cta-section { padding: 48px 5% 44px; }
   .cta-big { font-size: clamp(64px, 18vw, 120px); }
